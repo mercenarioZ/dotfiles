@@ -1,0 +1,16 @@
+[user]
+	email = funnystar320@gmail.com
+	name = mercenarioz
+
+[color]
+  status = auto
+  diff = auto
+  branch = auto
+
+[alias]
+  d = diff
+  co = checkout
+  ci = commit
+  ca = commit -a
+  br = branch
+  ba = branch -a
