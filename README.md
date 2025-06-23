@@ -1,9 +1,7 @@
 ## Contents
 
 - vim (Neovim) config
-- tmux config
 - git config
-- fish config
 - PowerShell config
 
 ## Neovim setup
