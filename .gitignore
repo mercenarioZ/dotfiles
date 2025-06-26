@@ -1,0 +1,4 @@
+# ignore neovim config files
+.config/nvim/*.json
+.config/nvim/*.toml
+.config/nvim/LICENSE
