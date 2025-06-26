@@ -14,3 +14,4 @@
   ca = commit -a
   br = branch
   ba = branch -a
+  st = status
