@@ -1,0 +1,14 @@
+[
+  {
+    "source": "$HOME/dotfiles/.config/nvim",
+    "target": "$env:LOCALAPPDATA/nvim"
+  },
+  {
+    "source": "$HOME/dotfiles/.gitconfig",
+    "target": "$HOME/.gitconfig"
+  },
+  {
+    "source": "$HOME/dotfiles/.config/powershell",
+    "target": "$HOME/.config/powershell"
+  }
+]
