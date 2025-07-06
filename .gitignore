@@ -2,3 +2,4 @@
 .config/nvim/*.json
 .config/nvim/*.toml
 .config/nvim/LICENSE
+.DS_Store
