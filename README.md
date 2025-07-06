@@ -1,3 +1,7 @@
+## Todo
+
+[] zsh config
+
 ## Contents
 
 - vim (Neovim) config
