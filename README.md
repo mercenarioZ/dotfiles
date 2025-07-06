@@ -1,6 +1,6 @@
 ## Todo
 
-[] zsh config
+- [ ] zsh config
 
 ## Contents
 
