@@ -1,6 +1,7 @@
 ## Todo
 
-- [ ] zsh config
+- [x] oh-my-zsh
+- [ ] starship
 
 ## Contents
 
