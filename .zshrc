@@ -1,7 +1,13 @@
+# zsh
+export ZSH="$HOME/.oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
+
+eval "$(starship init zsh)"
+#
 # Alias
 ## File/Folder
-alias ls="ls --color=auto"
-alias ll="ls -la"
+alias l="ls --color=auto"
+alias ll="ls -lah"
 alias ..="cd .."
 
 ## Quick navigation
@@ -9,4 +15,3 @@ alias dot="cd ~/dotfiles/"
 
 ## Git
 alias g="git"
-
