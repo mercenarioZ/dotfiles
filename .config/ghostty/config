@@ -1,0 +1,20 @@
+theme = catppuccin-mocha
+
+background-opacity = 0.77
+background-blur-radius = 18
+background = #031219
+
+font-family = GeistMono Nerd Font Mono
+font-size = 16
+
+cursor-style = block
+cursor-style-blink = true
+cursor-color = f6f6f6
+cursor-opacity = 0.45
+
+# windows
+window-height = 40
+window-width = 118
+
+window-padding-x = 8
+window-padding-y = 6
