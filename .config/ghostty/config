@@ -6,6 +6,8 @@ background = #031219
 
 font-family = GeistMono Nerd Font Mono
 font-size = 16
+font-thicken = true
+font-thicken-strength = 30
 
 cursor-style = block
 cursor-style-blink = true
