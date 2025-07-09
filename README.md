@@ -1,7 +1,7 @@
 ## Todo
 
-- [x] oh-my-zsh
-- [ ] starship
+- [ ] zsh plugins: autocompletion, suggestion, etc.
+- [x] starship
 
 ## Contents
 

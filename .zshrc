@@ -1,11 +1,9 @@
+# starship
+eval "$(starship init zsh)"
+
 # zsh
 export ZSH="$HOME/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
-
-# starship
-export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
-eval "$(starship init zsh)"
-
 
 # Alias
 ## File/Folder
