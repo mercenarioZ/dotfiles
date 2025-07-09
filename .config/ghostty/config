@@ -11,8 +11,8 @@ font-thicken-strength = 30
 
 cursor-style = block
 cursor-style-blink = true
-cursor-color = f6f6f6
-cursor-opacity = 0.45
+cursor-color = f7f7f7
+cursor-opacity = 0.50
 
 # windows
 window-height = 40
@@ -20,3 +20,4 @@ window-width = 118
 
 window-padding-x = 8
 window-padding-y = 6
+

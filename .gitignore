@@ -3,3 +3,6 @@
 .config/nvim/*.toml
 .config/nvim/LICENSE
 .DS_Store
+
+# Tmux
+.config/tmux/plugins/
