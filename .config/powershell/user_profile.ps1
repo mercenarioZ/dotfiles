@@ -1,6 +1,7 @@
 # Prompt
-Import-Module posh-git
-Import-Module -Name Terminal-Icons
+# Import-Module posh-git
+# Import-Module -Name Terminal-Icons
+Invoke-Expression (&starship init powershell)
 
 # PSReadLine
 Set-PSReadLineOption -EditMode Emacs
@@ -12,12 +13,6 @@ Set-PSReadLineOption -PredictionViewStyle ListView
 # Fzf
 Import-Module PSFzf
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
-
-# Load prompt config
-function Get-ScriptDirectory { Split-Path $MyInvocation.ScriptName }
-$PROMPT_CONFIG = Join-Path (Get-ScriptDirectory) 'catppuccin.omp.json'
-
-oh-my-posh --init --shell pwsh --config $PROMPT_CONFIG | Invoke-Expression
 
 # Alias
 Set-Alias vim nvim
