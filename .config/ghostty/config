@@ -4,13 +4,13 @@ background-opacity = 0.77
 background-blur-radius = 18
 background = #031219
 
-font-family = GeistMono Nerd Font Mono
+font-family = iMWritingMono Nerd Font Mono
 font-size = 16
 font-thicken = true
-font-thicken-strength = 30
+font-thicken-strength = 20
 
 cursor-style = block
-cursor-style-blink = true
+# cursor-style-blink = true
 cursor-color = f7f7f7
 cursor-opacity = 0.50
 
