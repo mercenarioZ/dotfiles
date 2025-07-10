@@ -1,9 +1,31 @@
-[package]
-disabled = true
+format = """
+$directory$git_branch$git_status$nodejs$golang
+$character"""
 
 [directory]
 truncation_length = 3
+style = "bold blue"
+
+[git_branch]
+symbol = "🌱 "
+style = "bold purple"
+format = "[$symbol$branch]($style) "
 
 [git_status]
 format = '([\[$all_status$ahead_behind\]]($style) )'
-style = "yellow"
+style = "bold red"
+staged = "●"
+modified = "M"
+deleted = "✘"
+untracked = "…"
+stashed = "📦"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕"
+conflicted = "⚔️ "
+
+[hostname]
+disabled = true
+
+[package]
+disabled = true
