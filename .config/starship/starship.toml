@@ -1,6 +1,20 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
 format = """
-$directory$git_branch$git_status$nodejs$golang
+$username$directory$git_branch$git_status$nodejs$golang
 $character"""
+
+[username]
+format = "💩 [$user]($style) "
+style_user = "bold green"
+show_always = true
+
+[hostname]
+disabled = true
+
+[character]
+success_symbol = '[➜](bold green)'
+error_symbol = '[➜](bold red)'
 
 [directory]
 truncation_length = 3
@@ -22,10 +36,7 @@ stashed = "📦"
 ahead = "⇡${count}"
 behind = "⇣${count}"
 diverged = "⇕"
-conflicted = "⚔️ "
-
-[hostname]
-disabled = true
+conflicted = "⚔️"
 
 [package]
 disabled = true
