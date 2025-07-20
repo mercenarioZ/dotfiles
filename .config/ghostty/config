@@ -1,11 +1,11 @@
 theme = catppuccin-mocha
 
-background-opacity = 0.70
-background-blur-radius = 21
+background-opacity = 0.75
+background-blur-radius = 24
 background = #031219
 
-font-family = iMWritingMono Nerd Font Mono
-font-size = 16
+font-family = Hack Nerd Font 
+font-size = 15
 font-thicken = true
 font-thicken-strength = 20
 
