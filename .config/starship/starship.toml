@@ -23,7 +23,7 @@ style = "bold blue"
 [git_branch]
 symbol = "🌱 "
 style = "bold purple"
-format = "[$symbol$branch]($style) "
+format = "on [$symbol$branch]($style) "
 
 [git_status]
 format = '([\[$all_status$ahead_behind\]]($style) )'
