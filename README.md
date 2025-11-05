@@ -22,7 +22,7 @@
   - **live grep**: [ripgrep](https://github.com/BurntSushi/ripgrep)
   - **find files**: [fd](https://github.com/sharkdp/fd)
 
-## Shell setup (macOS & Linux) (I do not use those currently, lol).
+## Shell setup (macOS & Linux)
 
 - [Fish shell](https://fishshell.com/)
 - [Fisher](https://github.com/jorgebucaran/fisher) - Plugin manager
