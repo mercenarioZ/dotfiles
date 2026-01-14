@@ -5,6 +5,7 @@ return {
 		opts = function()
 			return {
 				transparent = true,
+				priority = 1000,
 				styles = {
 					sidebars = "transparent",
 					floats = "transparent",
@@ -12,13 +13,12 @@ return {
 			}
 		end,
 	},
-	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		priority = 1000,
-		opts = {
-			flavour = "mocha", -- or "latte", "frappe", "macchiato"
-			transparent_background = true,
-		},
-	},
+	-- {
+	-- 	"catppuccin/nvim",
+	-- 	name = "catppuccin",
+	-- 	opts = {
+	-- 		flavour = "mocha", -- or "latte", "frappe", "macchiato"
+	-- 		transparent_background = true,
+	-- 	},
+	-- },
 }
