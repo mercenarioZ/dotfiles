@@ -1,7 +1,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-$username$directory$git_branch$git_status$nodejs$golang
+$username$directory$git_branch$git_status$nodejs$golang$python
 $character"""
 
 [username]
@@ -23,7 +23,7 @@ style = "bold blue"
 [git_branch]
 symbol = "🌱 "
 style = "bold purple"
-format = "on [$symbol$branch]($style) "
+format = "[$symbol$branch]($style) "
 
 [git_status]
 format = '([\[$all_status$ahead_behind\]]($style) )'
@@ -37,6 +37,15 @@ ahead = "⇡${count}"
 behind = "⇣${count}"
 diverged = "⇕"
 conflicted = "⚔️"
+
+[python]
+pyenv_version_name = false
+symbol = "🐍"
+python_binary = ['python', 'python3']
+format = '[$symbol $version]($style) '
+detect_extensions = []
+detect_files = []
+detect_folders = []
 
 [package]
 disabled = true

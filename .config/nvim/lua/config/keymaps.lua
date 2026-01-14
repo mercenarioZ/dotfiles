@@ -20,5 +20,5 @@ keymap.set("n", "<leader>l", "$")
 
 -- Diagnostics
 keymap.set("n", "<C-m>", function()
-  vim.diagnostic.goto_next()
+	vim.diagnostic.goto_next()
 end, opts)
