@@ -1,6 +1,6 @@
 ## Todo
 
-- [ ] zsh plugins: autocompletion, suggestion, etc.
+- [x] zsh plugins: autocompletion, suggestion, etc.
 - [x] starship
 
 ## Contents
