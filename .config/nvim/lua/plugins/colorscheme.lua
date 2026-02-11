@@ -13,12 +13,4 @@ return {
 			}
 		end,
 	},
-	-- {
-	-- 	"catppuccin/nvim",
-	-- 	name = "catppuccin",
-	-- 	opts = {
-	-- 		flavour = "mocha", -- or "latte", "frappe", "macchiato"
-	-- 		transparent_background = true,
-	-- 	},
-	-- },
 }
