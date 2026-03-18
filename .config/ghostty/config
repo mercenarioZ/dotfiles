@@ -1,23 +1,23 @@
 # theme = ''
 
 background-opacity = 0.85
-background-blur-radius = 12
+background-blur-radius = 14
 background = #031219
 
 font-family = Hack Nerd Font
-font-size = 13
+font-size = 16
 font-thicken = true
 font-thicken-strength = 30
 
 cursor-color = f7f7f7
-cursor-opacity = 0.60
+cursor-opacity = 0.55
 cursor-style = block
 cursor-style-blink = true
 
 # windows
-window-height = 40
+window-height = 45
 window-width = 125
 
 window-padding-x = 12
-window-padding-y = 6
+window-padding-y = 10
 

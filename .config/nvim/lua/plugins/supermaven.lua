@@ -8,7 +8,7 @@ return {
 		keymaps = {
 			accept_suggestion = nil,
 		},
-		disable_inline_completion = false,
+		disable_inline_completion = true,
 		ignore_filetypes = { "bigfile", "snacks_input", "snacks_notif" },
 	},
 }

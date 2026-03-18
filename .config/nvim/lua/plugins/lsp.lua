@@ -67,6 +67,7 @@ return {
 						},
 					},
 				},
+
 				lua_ls = {
 					-- enabled = false,
 					single_file_support = true,
@@ -136,19 +137,19 @@ return {
 			setup = {},
 		},
 	},
+
 	{
 		"neovim/nvim-lspconfig",
-		opts = function()
-			servers = {
-				["*"] = {
-					keys = {
-						{
-							"<leader>cl",
-							function()
-								Snacks.picker.lsp_config()
-							end,
-							desc = "Lsp Info",
-						},
+		opts = function(_, opts)
+			opts.servers = opts.servers or {}
+			opts.servers["*"] = {
+				keys = {
+					{
+						"<leader>cl",
+						function()
+							Snacks.picker.lsp_config()
+						end,
+						desc = "Lsp Info",
 					},
 				},
 			}
