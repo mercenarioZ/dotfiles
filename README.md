@@ -1,10 +1,4 @@
-## Todo
-
-- [x] zsh plugins: autocompletion, suggestion, etc.
-- [x] starship
-
 ## Contents
-
 - vim (Neovim) config
 - git config
 - PowerShell config
@@ -27,7 +21,7 @@
 - [Fish shell](https://fishshell.com/)
 - [Fisher](https://github.com/jorgebucaran/fisher) - Plugin manager
 - [Tide](https://github.com/IlanCosman/tide) - Shell theme
-- [Nerd fonts](https://github.com/ryanoasis/nerd-fonts) - Patched fonts for development-use. I use [PlemolJP](https://github.com/yuru7/PlemolJP) and BlexMono.
+- [Nerd fonts](https://github.com/ryanoasis/nerd-fonts) - I use BlexMono
 - [z for fish](https://github.com/jethrokuan/z) - Directory jumping
 - [Eza](https://github.com/eza-community/eza) - `ls` replacement
 - [ghq](https://github.com/x-motemen/ghq) - Local Git repository organizer
