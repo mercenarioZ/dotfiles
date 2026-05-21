@@ -21,3 +21,4 @@ window-width = 125
 window-padding-x = 12
 window-padding-y = 10
 
+macos-option-as-alt = left
