@@ -11,6 +11,8 @@ local opt = vim.opt
 
 opt.linebreak = true
 opt.wrap = true
+opt.breakindent = true
+
 vim.opt.cmdheight = 1
 
 if vim.fn.has("nvim-0.8") == 1 then
@@ -21,5 +23,3 @@ end
 vim.g.markdown_recommended_style = 0
 
 vim.g.lazyvim_prettier_needs_config = true
--- vim.g.lazyvim_picker = "telescope"
--- vim.g.lazyvim_cmp = "blink.cmp"
