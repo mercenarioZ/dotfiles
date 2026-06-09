@@ -1,7 +1,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-$username$directory$git_branch$git_status$nodejs$golang$python
+$username$time$directory$git_branch$git_status$nodejs$golang$python
 $character"""
 
 [username]
@@ -12,12 +12,18 @@ show_always = true
 [hostname]
 disabled = true
 
+[time]
+disabled = false
+format = "🕒 [$time]($style) "
+style = "bold yellow"
+time_format = "%H:%M:%S"
+
 [character]
 success_symbol = '[➜](bold green)'
 error_symbol = '[➜](bold red)'
 
 [directory]
-truncation_length = 3
+truncation_length = 2
 style = "bold blue"
 
 [git_branch]
