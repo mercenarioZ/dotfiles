@@ -14,8 +14,8 @@ disabled = true
 
 [time]
 disabled = false
-format = "🕒 [$time]($style) "
-style = "bold yellow"
+format = "󰥔 [$time]($style) "
+style = "bold green"
 time_format = "%H:%M:%S"
 
 [character]
@@ -27,7 +27,7 @@ truncation_length = 2
 style = "bold blue"
 
 [git_branch]
-symbol = "🌱 "
+symbol = " "
 style = "bold purple"
 format = "[$symbol$branch]($style) "
 
