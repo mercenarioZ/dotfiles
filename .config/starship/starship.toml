@@ -14,7 +14,7 @@ disabled = true
 
 [time]
 disabled = false
-format = "󰥔 [$time]($style) "
+format = "[$time]($style) "
 style = "bold green"
 time_format = "%H:%M:%S"
 
@@ -27,22 +27,24 @@ truncation_length = 2
 style = "bold blue"
 
 [git_branch]
-symbol = " "
+symbol = " "
 style = "bold purple"
 format = "[$symbol$branch]($style) "
 
 [git_status]
-format = '([\[$all_status$ahead_behind\]]($style) )'
-style = "bold red"
-staged = "●"
-modified = "M"
-deleted = "✘"
-untracked = "…"
-stashed = "📦"
-ahead = "⇡${count}"
-behind = "⇣${count}"
-diverged = "⇕"
-conflicted = "⚔️"
+format = '([$all_status$ahead_behind]($style) )'
+style = "bold yellow"
+staged = ""
+modified = ""
+deleted = ""
+renamed = ""
+typechanged = ""
+untracked = ""
+stashed = ""
+ahead = "${count}"
+behind = "${count}"
+diverged = "${ahead_count}${behind_count}"
+conflicted = ""
 
 [python]
 pyenv_version_name = false
