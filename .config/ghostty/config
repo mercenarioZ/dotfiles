@@ -3,6 +3,7 @@
 background-opacity = 0.85
 background-blur-radius = 14
 background = #031219
+minimum-contrast = 2
 
 font-family = BlexMono Nerd Font
 font-size = 16

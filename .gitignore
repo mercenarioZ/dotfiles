@@ -1,4 +1,4 @@
-# ignore neovim config files
+# neovim config files
 .config/nvim/*.json
 .config/nvim/*.toml
 .config/nvim/LICENSE
@@ -6,3 +6,9 @@
 
 # Tmux
 .config/tmux/plugins/
+
+# OpenSpec local app state
+openspec/
+
+# gh
+hosts.yml
