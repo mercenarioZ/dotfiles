@@ -1,19 +1,18 @@
 # theme = ''
 
 background-opacity = 0.85
-background-blur-radius = 14
+background-blur-radius = 12
 background = #031219
 minimum-contrast = 2
 
 font-family = BlexMono Nerd Font
-font-size = 16
+font-size = 15
 font-thicken = true
-font-thicken-strength = 30
+font-thicken-strength = 25
 
 cursor-color = f7f7f7
-cursor-opacity = 0.55
+cursor-opacity = 0.45
 cursor-style = block
-cursor-style-blink = true
 
 # windows
 window-height = 45
