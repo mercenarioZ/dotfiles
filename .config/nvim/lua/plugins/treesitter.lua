@@ -11,6 +11,8 @@ return {
 			"go",
 			"graphql",
 			"java",
+			"markdown",
+			"markdown_inline",
 			"prisma",
 		},
 	},

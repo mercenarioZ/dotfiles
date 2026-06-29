@@ -22,4 +22,11 @@ end
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
 
+vim.filetype.add({
+	extension = {
+		mdx = "markdown.mdx",
+	},
+})
+vim.treesitter.language.register("markdown", "markdown.mdx")
+
 vim.g.lazyvim_prettier_needs_config = true
