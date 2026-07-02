@@ -1,12 +1,12 @@
 # theme = ''
 
-background-opacity = 0.85
-background-blur-radius = 12
+background-opacity = 0.77
+background-blur-radius = 11
 background = #031219
 minimum-contrast = 2
 
 font-family = BlexMono Nerd Font
-font-size = 15
+font-size = 13
 font-thicken = true
 font-thicken-strength = 25
 
