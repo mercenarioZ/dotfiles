@@ -22,3 +22,7 @@ keymap.set("n", "<leader>l", "$")
 keymap.set("n", "<C-m>", function()
 	vim.diagnostic.goto_next()
 end, opts)
+
+-- Vertical split resize
+keymap.set("n", "<leader>+", ":vertical resize +5<CR>", opts)
+keymap.set("n", "<leader>-", ":vertical resize -5<CR>", opts)
