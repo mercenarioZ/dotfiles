@@ -15,7 +15,7 @@ disabled = true
 [time]
 disabled = false
 format = "[$time]($style) "
-style = "bold green"
+style = "white"
 time_format = "%H:%M:%S"
 
 [character]
