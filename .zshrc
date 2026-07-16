@@ -7,6 +7,10 @@ plugins=(z zsh-syntax-highlighting)
 export ZSH="$HOME/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 
+# fzf
+source <(fzf --zsh)
+bindkey '^X^F' fzf-file-widget
+
 # Flutter
 export PATH=$HOME/Documents/flutterSDK/flutter/bin:$PATH
 
