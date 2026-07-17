@@ -84,24 +84,6 @@ format = "[  $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 
-# Shorten some long paths by text replacement
-# similar to mapped_locations in Oh My Posh:
-# [directory.substitutions]
-# "/Documents" = "/󰈙 "
-# "/Downloads" = "/ "
-# "/Music" = "/ "
-# "/Pictures" = "/ "
-# "/Videos" = "/ "
-# "/Audios" = "/ "
-# "/GitHub" = "/ "
-# "/.config" = "/ "
-# "/Develop" = "/󰲋 "
-# Keep in mind that the order matters. For example:
-# "/Important Documents" = "/󰈙 "
-# will not be replaced, because "/Documents" was already substituted before.
-# So either put "/Important Documents" before "/Documents" or use the substituted version:
-# "/Important 󰈙 " = "/󰈙 "
-
 [time]
 disabled = false
 time_format = "%R"
@@ -127,18 +109,11 @@ error_symbol = '[](fg:bold red)'
 symbol = ""
 style = "bg:bg2 fg:text"
 format = '[ $symbol $branch ]($style)'
+truncation_length = 16
+truncation_symbol = "…"
 
 [git_status]
 disabled = false
-# ahead = " $count "
-# behind = " $count "
-# deleted = "﫧 $count "
-# diverged = " $count "
-# stashed = " $count "
-# modified = " $count "
-# staged = " $count "
-# renamed = " $count "
-# untracked = " $count "
 style = "bg:bg2 fg:text"
 format = '[($all_status$ahead_behind)]($style)'
 
