@@ -11,9 +11,6 @@ source $ZSH/oh-my-zsh.sh
 source <(fzf --zsh)
 bindkey '^X^F' fzf-file-widget
 
-# Flutter
-export PATH=$HOME/Documents/flutterSDK/flutter/bin:$PATH
-
 # Alias
 ## File/Folder
 alias l="ls --color=auto"
