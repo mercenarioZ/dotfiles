@@ -13,6 +13,7 @@ return {
 				"typescript-language-server",
 				"css-lsp",
 				"clang-format",
+				"gopls",
 			})
 		end,
 	},
@@ -129,6 +130,22 @@ return {
 									indent_size = "2",
 									continuation_indent_size = "2",
 								},
+							},
+						},
+					},
+				},
+
+				gopls = {
+					settings = {
+						gopls = {
+							gofumpt = true,
+							usePlaceholders = true,
+							completeUnimported = true,
+							staticcheck = true,
+							analyses = {
+								nilness = true,
+								unusedparams = true,
+								unusedwrite = true,
 							},
 						},
 					},
