@@ -1,6 +1,8 @@
 ## Contents
 - vim (Neovim) config
 - git config
+- prompt config via `starship`
+- tmux config
 - PowerShell config
 
 ## Neovim setup
