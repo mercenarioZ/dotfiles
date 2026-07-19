@@ -15,3 +15,5 @@ hosts.yml
 
 # Jujutsu repository-local configuration and metadata
 .config/jj/repos/
+
+.config/hunk/state.json
