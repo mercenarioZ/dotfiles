@@ -1,7 +1,7 @@
 # theme = ''
 
-background-opacity = 0.72
-background-blur-radius = 20
+background-opacity = 0.75
+background-blur-radius = 28
 background = #031219
 minimum-contrast = 2
 
@@ -15,10 +15,10 @@ cursor-opacity = 0.45
 cursor-style = block
 
 # windows
-window-height = 45
-window-width = 125
+window-height = 40
+window-width = 110
 
-window-padding-x = 12
-window-padding-y = 10
+window-padding-x = 8
+window-padding-y = 8
 
 macos-option-as-alt = left
