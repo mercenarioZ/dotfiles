@@ -16,4 +16,8 @@ hosts.yml
 # Jujutsu repository-local configuration and metadata
 .config/jj/repos/
 
+# hunk
 .config/hunk/state.json
+
+# ftc
+.config/FtcClient/

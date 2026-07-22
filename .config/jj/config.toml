@@ -3,3 +3,6 @@
 [user]
 name = "mercenarioZ"
 email = "funnystar320@gmail.com"
+
+[ui]
+diff-editor = "vimdiff"
