@@ -36,17 +36,8 @@ plugins=(z)
 
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 
-# Flutter SDK used by this Mac. Other machines can override it in
-# ~/.zshrc.local without committing machine-specific paths.
-if [[ -d "$HOME/Documents/flutterSDK/flutter/bin" ]]; then
-  export PATH="$HOME/Documents/flutterSDK/flutter/bin:$PATH"
-fi
-
-# Java on macOS. Linux uses its system JAVA_HOME or ~/.zshrc.local.
-if [[ "$OSTYPE" == darwin* ]] && [[ -x /usr/libexec/java_home ]]; then
-  export JAVA_HOME="$(/usr/libexec/java_home -v 21)"
-  export PATH="$JAVA_HOME/bin:$PATH"
-fi
+# Device-specific environment such as Flutter and Java paths.
+[[ -r "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
 
 # Local credentials. This file is never committed.
 [[ -r "$HOME/.zsh-secrets" ]] && source "$HOME/.zsh-secrets"
@@ -103,9 +94,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # Custom binaries
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
-
-# Optional per-machine overrides. Keep this file outside the repository.
-[[ -r "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
 
 # Isolated Codex CLI profile
 [[ -r "$HOME/.zshrc-codex" ]] && source "$HOME/.zshrc-codex"
