@@ -29,7 +29,7 @@ require("lazy").setup({
 		},
 
 		-- { import = "lazyvim.plugins.extras.formatting.prettier" },
-		-- { import = "lazyvim.plugins.extras..typescript" },
+		{ import = "lazyvim.plugins.extras.ai.supermaven" },
 
 		-- import/override with your plugins
 		{ import = "plugins" },
