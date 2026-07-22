@@ -19,5 +19,12 @@ hosts.yml
 # hunk
 .config/hunk/state.json
 
+# Machine-local shell configuration and credentials
+.zshrc.local
+.zsh-secrets
+.env
+.env.*
+!.env.example
+
 # ftc
 .config/FtcClient/
