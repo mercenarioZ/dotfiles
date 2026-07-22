@@ -7,6 +7,17 @@ elif [[ -d "/home/linuxbrew/.linuxbrew/bin" ]]; then
   export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 fi
 
+# Persistent command history for search and autosuggestions.
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=50000
+SAVEHIST=10000
+
+setopt APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+
 # pyenv
 if [[ -d "$HOME/.pyenv/shims" ]]; then
   export PATH="$HOME/.pyenv/shims:$PATH"
@@ -26,13 +37,15 @@ if (( $+commands[fzf] )); then
   bindkey '^X^F' fzf-file-widget
 fi
 
+# Smarter directory navigation.
+if (( $+commands[zoxide] )); then
+  eval "$(zoxide init zsh)"
+fi
+
 # starship
 if (( $+commands[starship] )); then
   eval "$(starship init zsh)"
 fi
-
-# Kept for compatibility with the existing shell setup.
-plugins=(z)
 
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 
@@ -79,11 +92,13 @@ export PATH="$HOME/.local/bin:$PATH"
 # Utilities
 alias ports='lsof -iTCP -sTCP:LISTEN -n -P'
 
-# zsh-autosuggestions installed through Homebrew
-if (( $+commands[brew] )); then
-  ZSH_AUTOSUGGESTIONS="$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-  [[ -r "$ZSH_AUTOSUGGESTIONS" ]] && source "$ZSH_AUTOSUGGESTIONS"
-  unset ZSH_AUTOSUGGESTIONS
+# Fish-like suggestions from shell history.
+if [[ -r /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
+  source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+elif (( $+commands[brew] )); then
+  autosuggestions_file="$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  [[ -r "$autosuggestions_file" ]] && source "$autosuggestions_file"
+  unset autosuggestions_file
 fi
 
 # bun
@@ -97,3 +112,12 @@ export PATH="$HOME/go/bin:$PATH"
 
 # Isolated Codex CLI profile
 [[ -r "$HOME/.zshrc-codex" ]] && source "$HOME/.zshrc-codex"
+
+# Keep syntax highlighting last so it can wrap all ZLE widgets.
+if [[ -r /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+  source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+elif (( $+commands[brew] )); then
+  syntax_highlighting_file="$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+  [[ -r "$syntax_highlighting_file" ]] && source "$syntax_highlighting_file"
+  unset syntax_highlighting_file
+fi
