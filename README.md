@@ -5,6 +5,29 @@
 - tmux config
 - PowerShell config
 
+## Symlink setup
+
+`~/.config` will be a real directory so credentials and generated state remain
+machine-local. Link only the shared application configs:
+
+```sh
+mkdir -p ~/.config
+
+ln -s ~/dotfiles/.zshrc ~/.zshrc
+
+ln -s ~/dotfiles/.config/nvim ~/.config/nvim
+ln -s ~/dotfiles/.config/powershell ~/.config/powershell
+ln -s ~/dotfiles/.config/starship ~/.config/starship
+ln -s ~/dotfiles/.config/tmux ~/.config/tmux
+
+mkdir -p ~/.config/hunk ~/.config/jj
+ln -s ~/dotfiles/.config/hunk/config.toml ~/.config/hunk/config.toml
+ln -s ~/dotfiles/.config/jj/config.toml ~/.config/jj/config.toml
+```
+
+Ghostty uses a platform-specific config; follow
+`.config/ghostty/README.md`.
+
 ## Neovim setup
 
 ### Requirements

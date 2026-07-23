@@ -6,6 +6,8 @@
 Link the appropriate file on each device:
 
 ```sh
+mkdir -p ~/.config/ghostty
+
 # Linux
 ln -s ~/dotfiles/.config/ghostty/linux.conf ~/.config/ghostty/config
 

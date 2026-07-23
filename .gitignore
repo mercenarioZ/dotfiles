@@ -10,14 +10,17 @@
 # OpenSpec local app state
 openspec/
 
-# gh
-hosts.yml
+# GitHub CLI machine-local config and credentials
+.config/gh/
 
 # Jujutsu repository-local configuration and metadata
 .config/jj/repos/
 
 # hunk
 .config/hunk/state.json
+
+# GitHub Copilot generated state
+.config/github-copilot/
 
 # Machine-local shell configuration and credentials
 .zshrc.local
