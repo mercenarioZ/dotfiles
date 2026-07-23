@@ -1,7 +1,7 @@
 # theme = ''
 
-background-opacity = 0.75
-background-blur-radius = 28
+background-opacity = 0.65
+background-blur-radius = 25
 background = #031219
 minimum-contrast = 2
 
