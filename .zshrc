@@ -47,6 +47,8 @@ if (( $+commands[starship] )); then
   eval "$(starship init zsh)"
 fi
 
+[[ $- == *i* ]] && fastfetch
+
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 
 # Device-specific environment such as Flutter and Java paths.
