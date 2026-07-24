@@ -26,6 +26,9 @@
     "padding": {
       "left": 2,
       "top": 1
+    },
+    "color": {
+      "1": "#bf84a2"
     }
   }
 }
