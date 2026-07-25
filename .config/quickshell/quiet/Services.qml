@@ -14,6 +14,16 @@ Scope {
     readonly property var sinkAudio: sink && sink.audio ? sink.audio : null
     readonly property real volume: sinkAudio ? sinkAudio.volume : 0
     readonly property bool muted: sinkAudio ? sinkAudio.muted : false
+    readonly property var audioSinks: {
+        if (!Pipewire.ready) return [];
+        const nodes = Pipewire.nodes.values || [];
+        return nodes
+            .filter(node => node && node.audio && node.isSink && !node.isStream)
+            .sort((left, right) => audioDeviceName(left).localeCompare(audioDeviceName(right)));
+    }
+    readonly property string audioSinkName: audioDeviceName(sink)
+    property int requestedAudioSinkId: -1
+    property string audioOutputStatus: ""
 
     readonly property var battery: UPower.displayDevice
     readonly property bool hasBattery: battery && battery.ready && battery.isLaptopBattery && battery.isPresent
@@ -69,6 +79,39 @@ Scope {
         if (!sinkAudio) return;
         sinkAudio.muted = !sinkAudio.muted;
         osdRequested("volume", sinkAudio.muted ? "Muted" : "Volume", sinkAudio.muted ? 0 : sinkAudio.volume, sinkAudio.muted ? "×" : "♪");
+    }
+
+    function audioDeviceName(node: var): string {
+        if (!node) return "No output device";
+        return node.description || node.nickname || node.name || "Audio output";
+    }
+
+    function isActiveAudioSink(node: var): bool {
+        if (!node) return false;
+        const activeId = requestedAudioSinkId >= 0
+            ? requestedAudioSinkId
+            : (sink ? sink.id : -1);
+        return node.id === activeId;
+    }
+
+    function setAudioSink(node: var): void {
+        if (!node || !node.audio || !node.isSink || node.isStream) return;
+
+        if (sink && node.id === sink.id) {
+            audioOutputStatus = "Already using " + audioDeviceName(node);
+            audioOutputStatusTimer.restart();
+            return;
+        }
+
+        requestedAudioSinkId = node.id;
+        audioOutputStatus = "Switching to " + audioDeviceName(node) + "…";
+        Pipewire.preferredDefaultAudioSink = node;
+        audioOutputStatusTimer.restart();
+    }
+
+    function setAudioSinkById(id: int): void {
+        const node = audioSinks.find(candidate => candidate.id === id);
+        if (node) setAudioSink(node);
     }
 
     function setBrightness(value: real): void {
@@ -136,6 +179,23 @@ Scope {
 
     PwObjectTracker {
         objects: root.sink ? [root.sink] : []
+    }
+
+    Connections {
+        target: Pipewire
+
+        function onDefaultAudioSinkChanged(): void {
+            if (!root.sink) return;
+            root.requestedAudioSinkId = -1;
+            root.audioOutputStatus = "Using " + root.audioDeviceName(root.sink);
+            root.audioOutputStatusTimer.restart();
+            root.osdRequested(
+                "volume",
+                root.audioDeviceName(root.sink),
+                root.sink.audio ? root.sink.audio.volume : 0,
+                "♪"
+            );
+        }
     }
 
     NotificationServer {
@@ -302,5 +362,11 @@ Scope {
         id: wallpaperStatusTimer
         interval: 2200
         onTriggered: root.wallpaperStatus = ""
+    }
+
+    Timer {
+        id: audioOutputStatusTimer
+        interval: 2600
+        onTriggered: root.audioOutputStatus = ""
     }
 }

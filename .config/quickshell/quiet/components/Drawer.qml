@@ -35,7 +35,9 @@ PanelWindow {
     WlrLayershell.namespace: "quiet-drawer"
     WlrLayershell.layer: WlrLayer.Overlay
 
-    onVisibleChanged: if (visible) content.forceActiveFocus()
+    onVisibleChanged: {
+        if (visible) content.forceActiveFocus();
+    }
 
     Rectangle {
         id: content
@@ -297,6 +299,132 @@ PanelWindow {
                         color: root.theme.text
                         border.width: 3
                         border.color: root.theme.accent
+                    }
+                }
+
+                Rectangle {
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: 44
+                    radius: root.theme.radiusSmall
+                    color: outputHeaderMouse.containsMouse ? root.theme.surfaceHover : root.theme.surface
+                    border.width: 1
+                    border.color: root.shellState.audioOutputsOpen ? root.theme.outlineStrong : root.theme.outline
+
+                    RowLayout {
+                        anchors.fill: parent
+                        anchors.leftMargin: 10
+                        anchors.rightMargin: 10
+                        spacing: 9
+
+                        Text {
+                            text: "󰕾"
+                            color: root.theme.accent
+                            font.family: root.theme.fontIcon
+                            font.pixelSize: 17
+                        }
+
+                        ColumnLayout {
+                            Layout.fillWidth: true
+                            spacing: 0
+
+                            Text {
+                                text: "Output device"
+                                color: root.theme.text
+                                font.family: root.theme.fontUi
+                                font.pixelSize: 10
+                                font.weight: Font.DemiBold
+                            }
+
+                            Text {
+                                Layout.fillWidth: true
+                                text: root.services.audioOutputStatus || root.services.audioSinkName
+                                color: root.services.audioOutputStatus ? root.theme.accent : root.theme.textMuted
+                                font.family: root.theme.fontUi
+                                font.pixelSize: 9
+                                elide: Text.ElideRight
+                            }
+                        }
+
+                        Text {
+                            text: root.shellState.audioOutputsOpen ? "⌃" : "⌄"
+                            color: root.theme.textMuted
+                            font.family: root.theme.fontMono
+                            font.pixelSize: 13
+                        }
+                    }
+
+                    MouseArea {
+                        id: outputHeaderMouse
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        enabled: root.services.audioSinks.length > 0
+                        onClicked: root.shellState.toggleAudioOutputs()
+                    }
+                }
+
+                ColumnLayout {
+                    Layout.fillWidth: true
+                    visible: root.shellState.audioOutputsOpen
+                    spacing: 4
+
+                    Repeater {
+                        model: root.services.audioSinks
+
+                        Rectangle {
+                            id: outputOption
+                            required property var modelData
+
+                            readonly property bool active: root.services.isActiveAudioSink(modelData)
+
+                            Layout.fillWidth: true
+                            Layout.preferredHeight: 40
+                            radius: root.theme.radiusSmall
+                            color: outputOptionMouse.containsMouse || active
+                                ? root.theme.accentSoft
+                                : root.theme.surface
+                            border.width: 1
+                            border.color: active ? root.theme.accent : root.theme.outline
+
+                            RowLayout {
+                                anchors.fill: parent
+                                anchors.leftMargin: 10
+                                anchors.rightMargin: 10
+                                spacing: 8
+
+                                Text {
+                                    text: "󰓃"
+                                    color: outputOption.active ? root.theme.accent : root.theme.textMuted
+                                    font.family: root.theme.fontIcon
+                                    font.pixelSize: 15
+                                }
+
+                                Text {
+                                    Layout.fillWidth: true
+                                    text: root.services.audioDeviceName(outputOption.modelData)
+                                    color: outputOption.active ? root.theme.accent : root.theme.text
+                                    font.family: root.theme.fontUi
+                                    font.pixelSize: 10
+                                    font.weight: outputOption.active ? Font.DemiBold : Font.Normal
+                                    elide: Text.ElideRight
+                                }
+
+                                Text {
+                                    text: outputOption.active ? "●" : ""
+                                    color: root.theme.accent
+                                    font.pixelSize: 8
+                                }
+                            }
+
+                            MouseArea {
+                                id: outputOptionMouse
+                                anchors.fill: parent
+                                hoverEnabled: true
+                                onClicked: {
+                                    root.services.setAudioSink(outputOption.modelData);
+                                    root.shellState.audioOutputsOpen = false;
+                                }
+                            }
+                        }
                     }
                 }
 

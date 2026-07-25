@@ -6,6 +6,7 @@ Scope {
 
     property bool launcherOpen: false
     property bool drawerOpen: false
+    property bool audioOutputsOpen: false
     property bool wallpaperOpen: false
     property bool sessionOpen: false
 
@@ -18,6 +19,7 @@ Scope {
     function closeOverlays(): void {
         launcherOpen = false;
         drawerOpen = false;
+        audioOutputsOpen = false;
         wallpaperOpen = false;
         sessionOpen = false;
     }
@@ -38,6 +40,10 @@ Scope {
         const next = !wallpaperOpen;
         closeOverlays();
         wallpaperOpen = next;
+    }
+
+    function toggleAudioOutputs(): void {
+        audioOutputsOpen = !audioOutputsOpen;
     }
 
     function toggleSession(): void {

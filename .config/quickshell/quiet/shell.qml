@@ -18,10 +18,17 @@ ShellRoot {
         target: "quiet"
         function toggleLauncher(): void { shellStateObject.toggleLauncher(); }
         function toggleDrawer(): void { shellStateObject.toggleDrawer(); }
+        function toggleAudioOutputs(): void { shellStateObject.toggleAudioOutputs(); }
         function toggleWallpaper(): void { shellStateObject.toggleWallpaper(); }
         function setWallpaper(path: string): void { servicesObject.setWallpaper(path); }
         function wallpaperStatus(): string { return servicesObject.wallpaperStatus; }
         function currentWallpaper(): string { return servicesObject.currentWallpaper; }
+        function setAudioSink(id: int): void { servicesObject.setAudioSinkById(id); }
+        function currentAudioSink(): string {
+            return servicesObject.sink
+                ? String(servicesObject.sink.id) + "\t" + servicesObject.audioSinkName
+                : "";
+        }
         function toggleSession(): void { shellStateObject.toggleSession(); }
         function close(): void { shellStateObject.closeOverlays(); }
         function reloadShell(): void { Quickshell.reload(true); }
