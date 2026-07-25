@@ -6,9 +6,28 @@ local function bind(keys, dispatcher, description, flags)
     hl.bind(keys, dispatcher, flags)
 end
 
+local function toggle_floating_window()
+    local window = hl.get_active_window()
+    if window == nil then return end
+
+    local entering_floating = not window.floating
+    hl.dispatch(hl.dsp.window.float({ action = "toggle", window = window }))
+
+    local is_chrome = window.class == "google-chrome"
+        or window.initial_class == "google-chrome"
+    if not entering_floating or not is_chrome then return end
+
+    local monitor = window.monitor or hl.get_active_monitor()
+    local width = monitor and math.min(1200, monitor.width - 120) or 1200
+    local height = monitor and math.min(760, monitor.height - 140) or 760
+
+    hl.dispatch(hl.dsp.window.resize({ x = width, y = height, window = window }))
+    hl.dispatch(hl.dsp.window.center({ window = window }))
+end
+
 -- Applications and shell surfaces.
 bind(mod .. " + Return", hl.dsp.exec_cmd("ghostty"), "Open terminal")
-bind(mod .. " + E", hl.dsp.exec_cmd("thunar"), "Open files")
+bind(mod .. " + E", hl.dsp.exec_cmd("ghostty -e yazi"), "Open files")
 bind(mod .. " + B", hl.dsp.exec_cmd("xdg-open https://"), "Open browser")
 bind(mod .. " + D", hl.dsp.global("quickshell:launcher"), "Open launcher")
 bind(mod .. " + Space", hl.dsp.global("quickshell:launcher"), "Open launcher")
@@ -19,7 +38,7 @@ bind("CTRL + ALT + Delete", hl.dsp.global("quickshell:session"), "Open session m
 
 -- Window lifecycle and layout.
 bind(mod .. " + Q", hl.dsp.window.close(), "Close window")
-bind(mod .. " + V", hl.dsp.window.float({ action = "toggle" }), "Toggle floating")
+bind(mod .. " + V", toggle_floating_window, "Toggle floating")
 bind(mod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }), "Toggle maximize")
 bind(mod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }), "Toggle fullscreen")
 bind(mod .. " + P", hl.dsp.window.pseudo({ action = "toggle" }), "Toggle pseudotile")
