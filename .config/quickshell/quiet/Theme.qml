@@ -2,6 +2,7 @@ import QtQuick
 
 QtObject {
     readonly property color background: "#090a0c"
+    readonly property color railBackground: "#a6031219"
     readonly property color surface: "#ee121315"
     readonly property color surfaceRaised: "#f5161719"
     readonly property color surfaceHover: "#ff25221f"

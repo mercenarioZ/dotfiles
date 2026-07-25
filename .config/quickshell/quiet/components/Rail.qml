@@ -42,7 +42,7 @@ PanelWindow {
         }
         height: root.theme.railWidth
         radius: root.theme.radiusMedium
-        color: root.theme.surface
+        color: root.theme.railBackground
         border.width: 1
         border.color: root.theme.outline
 

@@ -13,7 +13,7 @@ hl.config({
 		layout = "dwindle",
 		col = {
 			active_border = {
-				colors = { "#4e5d66", "#f1d39b" },
+				colors = { "#4e5d66", "#566575" },
 				angle = 42,
 			},
 			inactive_border = "#302d2a",
