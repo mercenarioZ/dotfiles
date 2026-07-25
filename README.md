@@ -4,6 +4,27 @@
 - prompt config via `starship`
 - tmux config
 - PowerShell config
+- Hyprland + Quickshell desktop (`quiet`)
+
+## Quiet desktop (Hyprland 0.56+)
+
+The desktop uses Hyprland's native Lua configuration from
+`.config/hypr/hyprland.lua` and the named Quickshell config at
+`.config/quickshell/quiet/`. A Hyprlang fallback remains available for recovery
+and for an already-running legacy-provider session.
+
+Core shortcuts:
+
+- `Super + D` or `Super + Space`: application launcher
+- `Super + O`: control and notification drawer
+- `Super + Escape`: session menu
+- `Super + Return`: terminal
+- `Super + E`: file manager
+- `Super + 1..0`: switch workspaces 1 through 10
+- `Super + Shift + 1..0`: move the active window to a workspace
+
+Runtime helpers: `quickshell`, `hyprpaper`, `hypridle`, `hyprlock`, `hyprsunset`,
+`brightnessctl`, `playerctl`, `grim`, `slurp`, and `swappy`.
 
 ## Symlink setup
 
@@ -17,8 +38,11 @@ ln -s ~/dotfiles/.zshrc ~/.zshrc
 
 ln -s ~/dotfiles/.config/nvim ~/.config/nvim
 ln -s ~/dotfiles/.config/powershell ~/.config/powershell
+ln -s ~/dotfiles/.config/fastfetch ~/.config/fastfetch
 ln -s ~/dotfiles/.config/starship ~/.config/starship
 ln -s ~/dotfiles/.config/tmux ~/.config/tmux
+ln -s ~/dotfiles/.config/hypr ~/.config/hypr
+ln -s ~/dotfiles/.config/quickshell ~/.config/quickshell
 
 mkdir -p ~/.config/hunk ~/.config/jj
 ln -s ~/dotfiles/.config/hunk/config.toml ~/.config/hunk/config.toml
