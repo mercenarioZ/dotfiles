@@ -10,6 +10,11 @@ Item {
     property bool danger: false
     property int buttonRadius: theme.radiusSmall
     property int iconSize: 16
+    property int labelSize: 12
+    property int labelWeight: Font.Medium
+    property color activeColor: theme.accent
+    property color activeTextColor: theme.background
+    property string labelFont: theme.fontMono
 
     signal clicked
     signal secondaryClicked
@@ -22,7 +27,7 @@ Item {
         anchors.fill: parent
         radius: root.buttonRadius
         color: {
-            if (root.active) return root.theme.accent;
+            if (root.active) return root.activeColor;
             if (mouse.containsMouse) return root.danger ? "#362022" : root.theme.surfaceHover;
             return "transparent";
         }
@@ -35,10 +40,10 @@ Item {
     Text {
         anchors.centerIn: parent
         text: root.icon || root.label
-        color: root.active ? root.theme.background : (root.danger ? root.theme.danger : root.theme.text)
-        font.family: root.icon ? root.theme.fontIcon : root.theme.fontMono
-        font.pixelSize: root.icon ? root.iconSize : 12
-        font.weight: root.active ? Font.DemiBold : Font.Medium
+        color: root.active ? root.activeTextColor : (root.danger ? root.theme.danger : root.theme.text)
+        font.family: root.icon ? root.theme.fontIcon : root.labelFont
+        font.pixelSize: root.icon ? root.iconSize : root.labelSize
+        font.weight: root.active ? Font.DemiBold : root.labelWeight
     }
 
     MouseArea {

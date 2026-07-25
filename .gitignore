@@ -22,6 +22,9 @@ openspec/
 # GitHub Copilot generated state
 .config/github-copilot/
 
+# Fcitx input-method preferences are machine-local
+.config/fcitx5/
+
 # Machine-local shell configuration and credentials
 .zshrc.local
 .zsh-secrets

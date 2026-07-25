@@ -23,9 +23,14 @@ Core shortcuts:
 - `Super + E`: file manager
 - `Super + 1..0`: switch workspaces 1 through 10
 - `Super + Shift + 1..0`: move the active window to a workspace
+- `Ctrl + Space`: toggle English/Vietnamese input (Unikey VNI)
 
 Runtime helpers: `quickshell`, `hyprpaper`, `hypridle`, `hyprlock`, `hyprsunset`,
-`brightnessctl`, `playerctl`, `grim`, `slurp`, and `swappy`.
+`brightnessctl`, `playerctl`, `fcitx5`, `fcitx5-unikey`, `grim`, `slurp`, and
+`swappy`.
+
+The `EN`/`VI` menu-bar control mirrors Fcitx state: left-click it to toggle the
+input method, or right-click it to open Fcitx configuration.
 
 Open the control drawer with `Super + O`, then choose **Wallpaper** to browse
 images from `~/Pictures/wallpapers`. The selection is stored locally at

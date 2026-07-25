@@ -42,6 +42,9 @@ Scope {
     property string networkName: "offline"
     property bool wifiEnabled: false
     property bool bluetoothEnabled: false
+    property bool inputMethodAvailable: false
+    property bool vietnameseInputActive: false
+    readonly property string inputMethodLabel: vietnameseInputActive ? "VI" : "EN"
     property bool nightLightAvailable: false
     property bool nightLightEnabled: false
     readonly property int nightLightTemperature: 5600
@@ -136,6 +139,15 @@ Scope {
 
     function openBluetoothSettings(): void {
         Quickshell.execDetached(["blueman-manager"]);
+    }
+
+    function toggleInputMethod(): void {
+        if (!inputMethodAvailable || inputMethodToggler.running) return;
+        inputMethodToggler.running = true;
+    }
+
+    function openInputMethodSettings(): void {
+        Quickshell.execDetached(["fcitx5-configtool"]);
     }
 
     function toggleNightLight(): void {
@@ -243,6 +255,30 @@ Scope {
     }
 
     Process {
+        id: inputMethodReader
+        command: ["fcitx5-remote"]
+        stdout: StdioCollector {
+            onStreamFinished: {
+                const state = parseInt(text.trim());
+                root.inputMethodAvailable = state === 1 || state === 2;
+                root.vietnameseInputActive = state === 2;
+            }
+        }
+        onExited: (exitCode, exitStatus) => {
+            if (exitCode !== 0) {
+                root.inputMethodAvailable = false;
+                root.vietnameseInputActive = false;
+            }
+        }
+    }
+
+    Process {
+        id: inputMethodToggler
+        command: ["fcitx5-remote", "-t"]
+        onExited: (exitCode, exitStatus) => inputMethodReader.running = true
+    }
+
+    Process {
         id: nightLightReader
         command: ["hyprctl", "hyprsunset", "temperature"]
         stdout: StdioCollector {
@@ -341,6 +377,14 @@ Scope {
         interval: 15000
         triggeredOnStart: true
         onTriggered: bluetoothReader.running = true
+    }
+
+    Timer {
+        running: true
+        repeat: true
+        interval: 1000
+        triggeredOnStart: true
+        onTriggered: if (!inputMethodReader.running) inputMethodReader.running = true
     }
 
     Timer {

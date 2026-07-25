@@ -2,7 +2,7 @@ import QtQuick
 
 QtObject {
     readonly property color background: "#090a0c"
-    readonly property color railBackground: "#a6031219"
+    readonly property color railBackground: "#c4121418"
     readonly property color surface: "#ee121315"
     readonly property color surfaceRaised: "#f5161719"
     readonly property color surfaceHover: "#ff25221f"
@@ -20,9 +20,9 @@ QtObject {
     readonly property string fontMono: "JetBrains Mono"
     readonly property string fontIcon: "JetBrainsMono Nerd Font"
 
-    readonly property int railWidth: 42
-    readonly property int railMargin: 2
-    readonly property int railZone: 44
+    readonly property int railWidth: 34
+    readonly property int railMargin: 0
+    readonly property int railZone: 34
     readonly property int radiusSmall: 8
     readonly property int radiusMedium: 14
     readonly property int radiusLarge: 22
