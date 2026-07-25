@@ -188,7 +188,7 @@ Scope {
             if (!root.sink) return;
             root.requestedAudioSinkId = -1;
             root.audioOutputStatus = "Using " + root.audioDeviceName(root.sink);
-            root.audioOutputStatusTimer.restart();
+            if (audioOutputStatusTimer) audioOutputStatusTimer.restart();
             root.osdRequested(
                 "volume",
                 root.audioDeviceName(root.sink),
