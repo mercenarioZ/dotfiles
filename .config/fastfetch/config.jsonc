@@ -24,7 +24,7 @@
   "logo": {
     "source": "~/.config/fastfetch/logo.txt",
     "padding": {
-      "left": 2,
+      "left": 1,
       "top": 1
     },
     "color": {
