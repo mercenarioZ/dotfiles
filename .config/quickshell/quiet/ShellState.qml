@@ -6,6 +6,7 @@ Scope {
 
     property bool launcherOpen: false
     property bool drawerOpen: false
+    property bool wallpaperOpen: false
     property bool sessionOpen: false
 
     property bool osdVisible: false
@@ -17,6 +18,7 @@ Scope {
     function closeOverlays(): void {
         launcherOpen = false;
         drawerOpen = false;
+        wallpaperOpen = false;
         sessionOpen = false;
     }
 
@@ -30,6 +32,12 @@ Scope {
         const next = !drawerOpen;
         closeOverlays();
         drawerOpen = next;
+    }
+
+    function toggleWallpaper(): void {
+        const next = !wallpaperOpen;
+        closeOverlays();
+        wallpaperOpen = next;
     }
 
     function toggleSession(): void {

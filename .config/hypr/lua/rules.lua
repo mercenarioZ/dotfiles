@@ -1,5 +1,5 @@
 -- Quickshell surfaces: only the transient panels receive compositor blur.
-for _, namespace in ipairs({ "quiet-drawer", "quiet-launcher", "quiet-session" }) do
+for _, namespace in ipairs({ "quiet-drawer", "quiet-launcher", "quiet-session", "quiet-wallpaper-picker" }) do
     hl.layer_rule({
         match = { namespace = namespace },
         blur = true,

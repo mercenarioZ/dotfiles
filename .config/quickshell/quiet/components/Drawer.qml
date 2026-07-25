@@ -337,6 +337,81 @@ PanelWindow {
                 }
             }
 
+            Rectangle {
+                Layout.fillWidth: true
+                Layout.preferredHeight: 54
+                radius: root.theme.radiusMedium
+                color: wallpaperMouse.containsMouse ? root.theme.surfaceHover : root.theme.surface
+                border.width: 1
+                border.color: root.theme.outline
+
+                RowLayout {
+                    anchors.fill: parent
+                    anchors.margins: 8
+                    spacing: 10
+
+                    Rectangle {
+                        Layout.preferredWidth: 58
+                        Layout.fillHeight: true
+                        radius: root.theme.radiusSmall
+                        color: root.theme.accentSoft
+                        clip: true
+
+                        Image {
+                            anchors.fill: parent
+                            source: root.services.currentWallpaper
+                                ? "file://" + root.services.currentWallpaper
+                                : ""
+                            fillMode: Image.PreserveAspectCrop
+                            asynchronous: true
+                            sourceSize.width: 116
+                            sourceSize.height: 76
+                        }
+                    }
+
+                    ColumnLayout {
+                        Layout.fillWidth: true
+                        spacing: 0
+
+                        Text {
+                            text: "Wallpaper"
+                            color: root.theme.text
+                            font.family: root.theme.fontUi
+                            font.pixelSize: 12
+                            font.weight: Font.DemiBold
+                        }
+
+                        Text {
+                            Layout.fillWidth: true
+                            text: {
+                                const path = root.services.currentWallpaper;
+                                if (!path) return "Choose from Pictures/wallpapers";
+                                return path.slice(path.lastIndexOf("/") + 1).replace(/\.[^.]+$/, "");
+                            }
+                            color: root.services.wallpaperStatus ? root.theme.accent : root.theme.textMuted
+                            font.family: root.theme.fontUi
+                            font.pixelSize: 10
+                            elide: Text.ElideRight
+                        }
+                    }
+
+                    Text {
+                        text: "›"
+                        color: root.theme.accent
+                        font.family: root.theme.fontMono
+                        font.pixelSize: 18
+                    }
+                }
+
+                MouseArea {
+                    id: wallpaperMouse
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    enabled: root.services.wallpaperReady
+                    onClicked: root.shellState.toggleWallpaper()
+                }
+            }
+
             RowLayout {
                 Layout.fillWidth: true
                 Text { text: "NOTIFICATIONS"; color: root.theme.textFaint; font.family: root.theme.fontMono; font.pixelSize: 10; font.letterSpacing: 1.2 }

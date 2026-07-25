@@ -18,6 +18,10 @@ ShellRoot {
         target: "quiet"
         function toggleLauncher(): void { shellStateObject.toggleLauncher(); }
         function toggleDrawer(): void { shellStateObject.toggleDrawer(); }
+        function toggleWallpaper(): void { shellStateObject.toggleWallpaper(); }
+        function setWallpaper(path: string): void { servicesObject.setWallpaper(path); }
+        function wallpaperStatus(): string { return servicesObject.wallpaperStatus; }
+        function currentWallpaper(): string { return servicesObject.currentWallpaper; }
         function toggleSession(): void { shellStateObject.toggleSession(); }
         function close(): void { shellStateObject.closeOverlays(); }
         function reloadShell(): void { Quickshell.reload(true); }
@@ -116,6 +120,18 @@ ShellRoot {
             required property var modelData
             screen: modelData
             theme: themeObject
+            services: servicesObject
+        }
+    }
+
+    Variants {
+        model: Quickshell.screens
+
+        WallpaperPicker {
+            required property var modelData
+            screen: modelData
+            theme: themeObject
+            shellState: shellStateObject
             services: servicesObject
         }
     }

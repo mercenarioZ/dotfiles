@@ -36,6 +36,18 @@ Scope {
     property bool nightLightEnabled: false
     readonly property int nightLightTemperature: 5600
 
+    readonly property string homeDirectory: String(Quickshell.env("HOME") || "")
+    readonly property string wallpaperDirectory: homeDirectory + "/Pictures/wallpapers"
+    readonly property string wallpaperStateDirectory: homeDirectory + "/.local/state/quiet"
+    readonly property string wallpaperLink: wallpaperStateDirectory + "/wallpaper"
+    readonly property string defaultWallpaper: wallpaperDirectory + "/Sunset-room.png"
+    property string currentWallpaper: ""
+    property string pendingWallpaper: ""
+    property string wallpaperStatus: ""
+    property bool wallpaperReady: false
+    property bool wallpaperBusy: false
+    property int wallpaperApplyAttempts: 0
+
     signal osdRequested(string kind, string label, real value, string icon)
     signal notificationArrived(var notification)
 
@@ -100,6 +112,28 @@ Scope {
         nightLightRefreshTimer.restart();
     }
 
+    function openWallpaperFolder(): void {
+        Quickshell.execDetached(["xdg-open", wallpaperDirectory]);
+    }
+
+    function setWallpaper(path: string): void {
+        if (!wallpaperReady || wallpaperBusy || !path.startsWith(wallpaperDirectory + "/")) return;
+
+        pendingWallpaper = path;
+        wallpaperBusy = true;
+        wallpaperStatus = "Saving selection…";
+        wallpaperLinker.exec(["ln", "-sfn", path, wallpaperLink]);
+    }
+
+    function applyPendingWallpaper(): void {
+        if (!pendingWallpaper) return;
+        wallpaperStatus = "Applying wallpaper…";
+        wallpaperSetter.exec([
+            "hyprctl", "hyprpaper", "wallpaper",
+            ", " + pendingWallpaper + ", cover"
+        ]);
+    }
+
     PwObjectTracker {
         objects: root.sink ? [root.sink] : []
     }
@@ -160,6 +194,69 @@ Scope {
         }
     }
 
+    Process {
+        id: wallpaperStateInitializer
+        command: ["mkdir", "-p", root.wallpaperStateDirectory]
+        running: true
+        onExited: (exitCode, exitStatus) => {
+            root.wallpaperReady = exitCode === 0;
+            if (root.wallpaperReady) wallpaperReader.running = true;
+            else root.wallpaperStatus = "Could not create wallpaper state";
+        }
+    }
+
+    Process {
+        id: wallpaperReader
+        command: ["readlink", "-f", root.wallpaperLink]
+        stdout: StdioCollector {
+            onStreamFinished: {
+                const path = text.trim();
+                if (path) root.currentWallpaper = path;
+            }
+        }
+        onExited: (exitCode, exitStatus) => {
+            if (exitCode !== 0) root.setWallpaper(root.defaultWallpaper);
+        }
+    }
+
+    Process {
+        id: wallpaperLinker
+        onExited: (exitCode, exitStatus) => {
+            if (exitCode !== 0) {
+                root.wallpaperBusy = false;
+                root.wallpaperStatus = "Could not save wallpaper";
+                return;
+            }
+
+            root.currentWallpaper = root.pendingWallpaper;
+            root.wallpaperApplyAttempts = 0;
+            root.applyPendingWallpaper();
+        }
+    }
+
+    Process {
+        id: wallpaperSetter
+        onExited: (exitCode, exitStatus) => {
+            if (exitCode === 0) {
+                root.wallpaperBusy = false;
+                root.wallpaperStatus = "Wallpaper applied";
+                wallpaperStatusTimer.restart();
+                return;
+            }
+
+            if (root.wallpaperApplyAttempts === 0) {
+                root.wallpaperApplyAttempts = 1;
+                root.wallpaperStatus = "Starting Hyprpaper…";
+                Quickshell.execDetached(["hyprpaper"]);
+                wallpaperRetryTimer.restart();
+                return;
+            }
+
+            root.wallpaperBusy = false;
+            root.wallpaperStatus = "Hyprpaper did not respond";
+        }
+    }
+
     Timer {
         id: brightnessTimer
         running: true
@@ -193,5 +290,17 @@ Scope {
         interval: 5000
         triggeredOnStart: true
         onTriggered: if (!nightLightReader.running) nightLightReader.running = true
+    }
+
+    Timer {
+        id: wallpaperRetryTimer
+        interval: 700
+        onTriggered: root.applyPendingWallpaper()
+    }
+
+    Timer {
+        id: wallpaperStatusTimer
+        interval: 2200
+        onTriggered: root.wallpaperStatus = ""
     }
 }

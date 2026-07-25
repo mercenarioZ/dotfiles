@@ -26,6 +26,10 @@ Core shortcuts:
 Runtime helpers: `quickshell`, `hyprpaper`, `hypridle`, `hyprlock`, `hyprsunset`,
 `brightnessctl`, `playerctl`, `grim`, `slurp`, and `swappy`.
 
+Open the control drawer with `Super + O`, then choose **Wallpaper** to browse
+images from `~/Pictures/wallpapers`. The selection is stored locally at
+`~/.local/state/quiet/wallpaper`, so changing it does not modify the repository.
+
 ## Symlink setup
 
 `~/.config` will be a real directory so credentials and generated state remain
