@@ -56,17 +56,30 @@ PanelWindow {
             )
         }
 
-        HoverButton {
+        Row {
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
             anchors.leftMargin: 4
-            theme: root.theme
-            icon: "◇"
-            iconSize: 20
-            implicitWidth: 34
-            implicitHeight: 34
-            active: root.shellState.launcherOpen
-            onClicked: root.shellState.toggleLauncher()
+            spacing: 2
+
+            HoverButton {
+                theme: root.theme
+                icon: "◇"
+                iconSize: 20
+                implicitWidth: 34
+                implicitHeight: 34
+                active: root.shellState.launcherOpen
+                onClicked: root.shellState.toggleLauncher()
+            }
+
+            HoverButton {
+                theme: root.theme
+                label: "?"
+                implicitWidth: 34
+                implicitHeight: 34
+                active: root.shellState.manualOpen
+                onClicked: root.shellState.toggleManual()
+            }
         }
 
         Row {

@@ -17,6 +17,7 @@ Core shortcuts:
 
 - `Super + D` or `Super + Space`: application launcher
 - `Super + O`: control and notification drawer
+- `Super + /`: shortcut manual
 - `Super + Escape`: session menu
 - `Super + Return`: terminal
 - `Super + E`: file manager

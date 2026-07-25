@@ -20,6 +20,7 @@ ShellRoot {
         function toggleDrawer(): void { shellStateObject.toggleDrawer(); }
         function toggleAudioOutputs(): void { shellStateObject.toggleAudioOutputs(); }
         function toggleWallpaper(): void { shellStateObject.toggleWallpaper(); }
+        function toggleManual(): void { shellStateObject.toggleManual(); }
         function setWallpaper(path: string): void { servicesObject.setWallpaper(path); }
         function wallpaperStatus(): string { return servicesObject.wallpaperStatus; }
         function currentWallpaper(): string { return servicesObject.currentWallpaper; }
@@ -53,6 +54,13 @@ ShellRoot {
         name: "session"
         description: "Toggle Quiet session menu"
         onPressed: shellStateObject.toggleSession()
+    }
+
+    GlobalShortcut {
+        appid: "quickshell"
+        name: "manual"
+        description: "Toggle shortcut manual"
+        onPressed: shellStateObject.toggleManual()
     }
 
     GlobalShortcut {
@@ -147,6 +155,17 @@ ShellRoot {
         model: Quickshell.screens
 
         Osd {
+            required property var modelData
+            screen: modelData
+            theme: themeObject
+            shellState: shellStateObject
+        }
+    }
+
+    Variants {
+        model: Quickshell.screens
+
+        ShortcutManual {
             required property var modelData
             screen: modelData
             theme: themeObject
