@@ -10,8 +10,8 @@
 
 The desktop uses Hyprland's native Lua configuration from
 `.config/hypr/hyprland.lua` and the named Quickshell config at
-`.config/quickshell/quiet/`. A Hyprlang fallback remains available for recovery
-and for an already-running legacy-provider session.
+`.config/quickshell/quiet/`. Hyprlock, Hypridle, Hyprpaper, and Hyprsunset remain
+separate programs and use their own `.conf` files in `.config/hypr/`.
 
 Core shortcuts:
 
