@@ -29,6 +29,8 @@ Runtime helpers: `quickshell`, `hyprpaper`, `hypridle`, `hyprlock`, `hyprsunset`
 Open the control drawer with `Super + O`, then choose **Wallpaper** to browse
 images from `~/Pictures/wallpapers`. The selection is stored locally at
 `~/.local/state/quiet/wallpaper`, so changing it does not modify the repository.
+The volume section also includes a native PipeWire output selector for switching
+between connected speakers, headphones, HDMI, and Bluetooth audio devices.
 
 ## Symlink setup
 
