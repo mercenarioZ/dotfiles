@@ -16,6 +16,7 @@ PanelWindow {
     implicitHeight: Math.max(1, toastColumn.height + 20)
     exclusionMode: ExclusionMode.Ignore
     visible: true
+    mask: Region { item: toastColumn }
 
     anchors {
         top: true
@@ -64,10 +65,9 @@ PanelWindow {
                     anchors.margins: 12
                     spacing: 11
 
-                    IconImage {
-                        source: Quickshell.iconPath(toast.modelData.appIcon, "dialog-information")
-                        implicitWidth: 34
-                        implicitHeight: 34
+                    NotificationThumbnail {
+                        notification: toast.modelData
+                        implicitSize: 46
                     }
 
                     ColumnLayout {

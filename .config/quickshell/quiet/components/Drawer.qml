@@ -18,18 +18,14 @@ PanelWindow {
     visible: shellState.drawerOpen
     focusable: true
     exclusionMode: ExclusionMode.Ignore
-    implicitWidth: 374
+    implicitWidth: screen ? screen.width : 1920
+    implicitHeight: screen ? screen.height : 1080
 
     anchors {
         top: true
         bottom: true
         right: true
-    }
-
-    margins {
-        top: root.theme.railZone + 4
-        bottom: 10
-        right: 10
+        left: true
     }
 
     WlrLayershell.namespace: "quiet-drawer"
@@ -41,7 +37,16 @@ PanelWindow {
 
     Rectangle {
         id: content
-        anchors.fill: parent
+        z: 1
+        width: 374
+        anchors {
+            top: parent.top
+            bottom: parent.bottom
+            right: parent.right
+            topMargin: root.theme.railZone + 4
+            bottomMargin: 10
+            rightMargin: 10
+        }
         radius: root.theme.radiusLarge
         color: root.theme.surfaceRaised
         border.width: 1
@@ -582,10 +587,9 @@ PanelWindow {
                         anchors.margins: 10
                         spacing: 10
 
-                        IconImage {
-                            source: Quickshell.iconPath(notificationItem.modelData.appIcon, "dialog-information")
-                            implicitWidth: 30
-                            implicitHeight: 30
+                        NotificationThumbnail {
+                            notification: notificationItem.modelData
+                            implicitSize: 42
                         }
 
                         ColumnLayout {
@@ -653,5 +657,10 @@ PanelWindow {
                 }
             }
         }
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: root.shellState.closeOverlays()
     }
 }
