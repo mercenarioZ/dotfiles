@@ -178,9 +178,7 @@ PanelWindow {
                         }
                         Text {
                             anchors.horizontalCenter: parent.horizontalCenter
-                            text: root.services.nightLightEnabled
-                                ? root.services.nightLightTemperature + " K"
-                                : "Night light"
+                            text: "Night light"
                             color: root.theme.text
                             font.pixelSize: 10
                             font.family: root.theme.fontUi
