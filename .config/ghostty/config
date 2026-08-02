@@ -1,12 +1,12 @@
 # theme = Catppuccin Mocha
 
-background-opacity = 0.85
-background-blur-radius = 25
+background-opacity = 0.8
+background-blur-radius = 28
 background = #1e1e2e
 minimum-contrast = 2
 
 font-family = BlexMono Nerd Font
-font-size = 14
+font-size = 18
 font-thicken = true
 font-thicken-strength = 25
 
