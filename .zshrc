@@ -7,6 +7,21 @@ elif [[ -d "/home/linuxbrew/.linuxbrew/bin" ]]; then
   export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 fi
 
+# Tab completion, including extra definitions installed by Homebrew.
+if (( $+commands[brew] )); then
+  brew_prefix="$(brew --prefix)"
+  [[ -d "$brew_prefix/share/zsh-completions" ]] && fpath=("$brew_prefix/share/zsh-completions" $fpath)
+  unset brew_prefix
+fi
+
+autoload -Uz compinit
+compinit
+
+setopt AUTO_MENU
+setopt COMPLETE_IN_WORD
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
 # Persistent command history for search and autosuggestions.
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=50000
@@ -47,7 +62,7 @@ if (( $+commands[starship] )); then
   eval "$(starship init zsh)"
 fi
 
-[[ $- == *i* ]] && fastfetch
+# [[ $- == *i* ]] && fastfetch
 
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 
@@ -95,6 +110,8 @@ export PATH="$HOME/.local/bin:$PATH"
 alias ports='lsof -iTCP -sTCP:LISTEN -n -P'
 
 # Fish-like suggestions from shell history.
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 if [[ -r /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
   source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 elif (( $+commands[brew] )); then

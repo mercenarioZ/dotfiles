@@ -1,4 +1,5 @@
 # neovim config files
+nvim.log
 .config/nvim/*.json
 .config/nvim/*.toml
 .config/nvim/LICENSE

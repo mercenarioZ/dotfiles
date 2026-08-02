@@ -1,16 +1,36 @@
 return {
+	-- {
+	-- 	"craftzdog/solarized-osaka.nvim",
+	-- 	lazy = true,
+	-- 	opts = function()
+	-- 		return {
+	-- 			transparent = true,
+	-- 			priority = 1000,
+	-- 			styles = {
+	-- 				sidebars = "transparent",
+	-- 				floats = "transparent",
+	-- 			},
+	-- 		}
+	-- 	end,
+	-- },
 	{
-		"craftzdog/solarized-osaka.nvim",
-		lazy = true,
-		opts = function()
-			return {
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+		opts = {
+			flavour = "mocha",
+			transparent_background = true,
+			float = {
 				transparent = true,
-				priority = 1000,
-				styles = {
-					sidebars = "transparent",
-					floats = "transparent",
-				},
-			}
-		end,
+			},
+			integrations = {
+				gitsigns = true,
+				treesitter = true,
+				notify = true,
+				noice = true,
+				telescope = true,
+				fzf = true,
+			},
+		},
 	},
 }
