@@ -1,12 +1,12 @@
 # theme = Catppuccin Mocha
 
-background-opacity = 0.8
-background-blur-radius = 28
+background-opacity = 0.7
+background-blur-radius = 24
 background = #1e1e2e
 minimum-contrast = 2
 
 font-family = BlexMono Nerd Font
-font-size = 18
+font-size = 17
 font-thicken = true
 font-thicken-strength = 25
 
@@ -19,6 +19,7 @@ window-height = 40
 window-width = 110
 
 window-padding-x = 8
-window-padding-y = 8
+window-padding-y = 8,0
+window-padding-balance = true
 
 macos-option-as-alt = left
