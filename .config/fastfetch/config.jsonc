@@ -17,7 +17,12 @@
     "disk",
     "battery",
     "poweradapter",
-    "break"
+    "break",
+    {
+      "type": "disk",
+      "key": "OS age",
+      "format": "{days} days"
+    }
   ],
   "logo": {
     "source": "~/.config/fastfetch/logo.txt",

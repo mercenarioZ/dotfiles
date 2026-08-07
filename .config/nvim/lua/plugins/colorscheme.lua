@@ -1,18 +1,4 @@
 return {
-	-- {
-	-- 	"craftzdog/solarized-osaka.nvim",
-	-- 	lazy = true,
-	-- 	opts = function()
-	-- 		return {
-	-- 			transparent = true,
-	-- 			priority = 1000,
-	-- 			styles = {
-	-- 				sidebars = "transparent",
-	-- 				floats = "transparent",
-	-- 			},
-	-- 		}
-	-- 	end,
-	-- },
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
@@ -20,6 +6,15 @@ return {
 		opts = {
 			flavour = "mocha",
 			transparent_background = true,
+
+			custom_highlights = function(colors)
+				return {
+					GitSignsCurrentLineBlame = {
+						fg = colors.overlay0,
+						italic = true,
+					},
+				}
+			end,
 			float = {
 				transparent = true,
 			},

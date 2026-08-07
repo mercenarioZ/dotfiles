@@ -1,18 +1,13 @@
+.DS_Store
+
 # neovim config files
-nvim.log
+/.nvimlog
 .config/nvim/*.json
 .config/nvim/*.toml
 .config/nvim/LICENSE
-.DS_Store
 
 # Tmux
 .config/tmux/plugins/
-
-# OpenSpec local app state
-openspec/
-
-# GitHub CLI machine-local config and credentials
-.config/gh/
 
 # Jujutsu repository-local configuration and metadata
 .config/jj/repos/
@@ -33,5 +28,3 @@ openspec/
 .env.*
 !.env.example
 
-# ftc
-.config/FtcClient/

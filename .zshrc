@@ -129,9 +129,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 
-# Isolated Codex CLI profile
-[[ -r "$HOME/.zshrc-codex" ]] && source "$HOME/.zshrc-codex"
-
 # Keep syntax highlighting last so it can wrap all ZLE widgets.
 if [[ -r /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
   source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
