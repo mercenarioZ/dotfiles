@@ -5,6 +5,7 @@
 .config/nvim/*.json
 .config/nvim/*.toml
 .config/nvim/LICENSE
+*.log
 
 # Tmux
 .config/tmux/plugins/
