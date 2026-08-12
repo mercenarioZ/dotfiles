@@ -3,14 +3,12 @@ return {
 	version = false,
 	opts = {
 		ensure_installed = {
-			"astro",
 			"cmake",
 			"cpp",
 			"gitignore",
 			"css",
 			"go",
 			"graphql",
-			"java",
 			"markdown",
 			"markdown_inline",
 			"prisma",
