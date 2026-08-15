@@ -20,7 +20,10 @@ keymap.set("n", "<leader>l", "$")
 
 -- Diagnostics
 keymap.set("n", "<C-m>", function()
-	vim.diagnostic.goto_next()
+	vim.diagnostic.jump({
+		count = 1,
+		float = true,
+	})
 end, opts)
 
 -- Vertical split resize
