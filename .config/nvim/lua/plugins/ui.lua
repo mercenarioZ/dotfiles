@@ -1,4 +1,23 @@
 return {
+	-- bufferline
+	{
+		"akinsho/bufferline.nvim",
+		opts = function(_, opts)
+			local colors = require("catppuccin.palettes").get_palette("mocha")
+
+			opts.highlights = require("catppuccin.special.bufferline").get_theme({
+				custom = {
+					all = {
+						buffer_visible = { fg = colors.subtext0 },
+						close_button_visible = { fg = colors.overlay1 },
+						duplicate_visible = { fg = colors.subtext0 },
+						tab = { fg = colors.subtext0 },
+					},
+				},
+			})
+		end,
+	},
+
 	-- messages, cmdline and the popup menu
 	{
 		"folke/noice.nvim",
