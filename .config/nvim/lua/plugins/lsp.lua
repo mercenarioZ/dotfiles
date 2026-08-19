@@ -23,6 +23,17 @@ return {
 		opts = {
 			inlay_hints = { enabled = false },
 			servers = {
+				clangd = {
+					-- Prefer an existing clangd (for example, Apple's); otherwise let Mason install it.
+					mason = vim.fn.executable("clangd") == 0,
+					cmd = {
+						"clangd",
+						"--background-index",
+						"--clang-tidy",
+						"--header-insertion=iwyu",
+						"--completion-style=detailed",
+					},
+				},
 				cssls = {},
 				tailwindcss = {
 					root_dir = function(...)
