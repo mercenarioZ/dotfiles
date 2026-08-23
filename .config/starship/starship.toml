@@ -45,7 +45,7 @@ $character
 
 [username]
 disabled = false
-show_always = true
+show_always = false
 style_user = "bg:bg0 fg:text"
 style_root = "bg:bg0 fg:text"
 # symbol = "󰀄"
@@ -81,7 +81,7 @@ disabled = false
 style = "bg:bg1 fg:text"
 # home_symbol = ""
 format = "[  $path ]($style)"
-truncation_length = 3
+truncation_length = 2
 truncation_symbol = "…/"
 
 [time]
