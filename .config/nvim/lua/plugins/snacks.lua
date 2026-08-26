@@ -11,7 +11,7 @@ return {
 						preset = "sidebar",
 						preview = false,
 						layout = {
-							width = 32,
+							width = 40,
 							min_width = 20,
 						},
 					},
