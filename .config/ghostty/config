@@ -11,7 +11,7 @@ font-thicken = true
 font-thicken-strength = 25
 
 cursor-color = fcee86
-cursor-opacity = 0.9
+cursor-opacity = 0.8
 cursor-style = block
 
 # windows
