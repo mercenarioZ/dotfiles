@@ -94,7 +94,6 @@ else
 fi
 
 # Navigation
-alias dot='cd "$HOME/dotfiles"'
 alias ..='cd ..'
 
 # Neovim
