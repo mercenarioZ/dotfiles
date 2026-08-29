@@ -31,6 +31,7 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.ai.supermaven" },
 		{ import = "lazyvim.plugins.extras.lang.vue" },
 		{ import = "lazyvim.plugins.extras.lang.astro" },
+		{ import = "lazyvim.plugins.extras.lang.java" },
 
 		-- import/override with your plugins
 		{ import = "plugins" },
