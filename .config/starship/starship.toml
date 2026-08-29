@@ -18,30 +18,32 @@ $c\
 $cpp\
 $elixir\
 $elm\
-$golang\
 $gradle\
 $haskell\
-$java\
 $julia\
 $kotlin\
-$nodejs\
 $nim\
 $php\
-$python\
 $rust\
 $scala\
-[](fg:bg3 bg:bg4)\
+[](fg:bg3)\
+$cmd_duration\
+$fill\
+$golang\
+$java\
+$nodejs\
+$python\
 $conda\
 $docker_context\
 $pixi\
-[](fg:bg4 bg:bg5)\
 $time\
-[](fg:bg5)\
-$cmd_duration\
 $line_break\
 [╰](gray)\
 $character
 """
+
+[fill]
+symbol = " "
 
 [username]
 disabled = false
@@ -88,7 +90,7 @@ truncation_symbol = "…/"
 disabled = false
 time_format = "%R"
 style = "bg:bg5 fg:text"
-format = '[  $time ]($style)'
+format = '[](fg:bg5)[  $time ]($style)[](fg:bg5)'
 
 [cmd_duration]
 disabled = false
@@ -120,17 +122,17 @@ format = '[($all_status$ahead_behind)]($style)'
 [conda]
 symbol = ""
 style = "bg:bg4 fg:text"
-format = '[ $symbol ($environment) ]($style)'
+format = '[](fg:bg4)[ $symbol ($environment) ]($style)[](fg:bg4)'
 ignore_base = false
 
 [docker_context]
 symbol = ""
 style = "bg:bg4 fg:text"
-format = '[ $symbol ($context) ]($style)'
+format = '[](fg:bg4)[ $symbol ($context) ]($style)[](fg:bg4)'
 
 [pixi]
 style = "bg:bg4 fg:text"
-format = '[ $symbol ($version) ($environment) ]($style)'
+format = '[](fg:bg4)[ $symbol ($version) ($environment) ]($style)[](fg:bg4)'
 
 [c]
 symbol = ""
@@ -155,7 +157,7 @@ format = '[ $symbol ($version) ]($style)'
 [golang]
 symbol = ""
 style = "bg:bg3 fg:text"
-format = '[ $symbol ($version) ]($style)'
+format = '[](fg:bg3)[ $symbol ($version) ]($style)[](fg:bg3)'
 
 [gradle]
 symbol = ""
@@ -170,7 +172,7 @@ format = '[ $symbol ($version) ]($style)'
 [java]
 symbol = ""
 style = "bg:bg3 fg:text"
-format = '[ $symbol ($version) ]($style)'
+format = '[](fg:bg3)[ $symbol ($version) ]($style)[](fg:bg3)'
 
 [julia]
 symbol = ""
@@ -185,7 +187,7 @@ format = '[ $symbol ($version) ]($style)'
 [nodejs]
 symbol = ""
 style = "bg:bg3 fg:text"
-format = '[ $symbol ($version) ]($style)'
+format = '[](fg:bg3)[ $symbol ($version) ]($style)[](fg:bg3)'
 detect_files = ["package.json"]
 detect_extensions = ["js", "ts"]
 detect_folders = ["node_modules"]
@@ -203,7 +205,7 @@ format = '[ $symbol ($version) ]($style)'
 [python]
 symbol = ""
 style = "bg:bg3 fg:text"
-format = '[ $symbol ($virtualenv) ]($style)'
+format = '[](fg:bg3)[ $symbol ($virtualenv) ]($style)[](fg:bg3)'
 
 [rust]
 symbol = ""
