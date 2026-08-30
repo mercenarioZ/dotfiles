@@ -29,6 +29,7 @@ $scala\
 [](fg:bg3)\
 $cmd_duration\
 $fill\
+[](fg:chip_bg)\
 $golang\
 $java\
 $nodejs\
@@ -37,6 +38,7 @@ $conda\
 $docker_context\
 $pixi\
 $time\
+[](fg:chip_bg)\
 $line_break\
 [╰](gray)\
 $character
@@ -89,8 +91,8 @@ truncation_symbol = "…/"
 [time]
 disabled = false
 time_format = "%R"
-style = "bg:bg5 fg:text"
-format = '[](fg:bg5)[  $time ]($style)[](fg:bg5)'
+style = "bold bg:chip_bg fg:chip_text"
+format = '[  ](bold fg:time_accent bg:chip_bg)[ $time ]($style)'
 
 [cmd_duration]
 disabled = false
@@ -121,18 +123,18 @@ format = '[($all_status$ahead_behind)]($style)'
 
 [conda]
 symbol = ""
-style = "bg:bg4 fg:text"
-format = '[](fg:bg4)[ $symbol ($environment) ]($style)[](fg:bg4)'
+style = "bold bg:chip_bg fg:chip_text"
+format = '[ $symbol](bold fg:env_accent bg:chip_bg)[ ($environment) ]($style)'
 ignore_base = false
 
 [docker_context]
 symbol = ""
-style = "bg:bg4 fg:text"
-format = '[](fg:bg4)[ $symbol ($context) ]($style)[](fg:bg4)'
+style = "bold bg:chip_bg fg:chip_text"
+format = '[ $symbol](bold fg:env_accent bg:chip_bg)[ ($context) ]($style)'
 
 [pixi]
-style = "bg:bg4 fg:text"
-format = '[](fg:bg4)[ $symbol ($version) ($environment) ]($style)[](fg:bg4)'
+style = "bold bg:chip_bg fg:chip_text"
+format = '[ $symbol](bold fg:env_accent bg:chip_bg)[ ($version) ($environment) ]($style)'
 
 [c]
 symbol = ""
@@ -156,8 +158,8 @@ format = '[ $symbol ($version) ]($style)'
 
 [golang]
 symbol = ""
-style = "bg:bg3 fg:text"
-format = '[](fg:bg3)[ $symbol ($version) ]($style)[](fg:bg3)'
+style = "bold bg:chip_bg fg:chip_text"
+format = '[ $symbol](bold fg:runtime_accent bg:chip_bg)[ ($version) ]($style)'
 
 [gradle]
 symbol = ""
@@ -171,8 +173,8 @@ format = '[ $symbol ($version) ]($style)'
 
 [java]
 symbol = ""
-style = "bg:bg3 fg:text"
-format = '[](fg:bg3)[ $symbol ($version) ]($style)[](fg:bg3)'
+style = "bold bg:chip_bg fg:chip_text"
+format = '[ $symbol](bold fg:runtime_accent bg:chip_bg)[ ($version) ]($style)'
 
 [julia]
 symbol = ""
@@ -186,8 +188,8 @@ format = '[ $symbol ($version) ]($style)'
 
 [nodejs]
 symbol = ""
-style = "bg:bg3 fg:text"
-format = '[](fg:bg3)[ $symbol ($version) ]($style)[](fg:bg3)'
+style = "bold bg:chip_bg fg:chip_text"
+format = '[ $symbol](bold fg:runtime_accent bg:chip_bg)[ ($version) ]($style)'
 detect_files = ["package.json"]
 detect_extensions = ["js", "ts"]
 detect_folders = ["node_modules"]
@@ -204,8 +206,8 @@ format = '[ $symbol ($version) ]($style)'
 
 [python]
 symbol = ""
-style = "bg:bg3 fg:text"
-format = '[](fg:bg3)[ $symbol ($virtualenv) ]($style)[](fg:bg3)'
+style = "bold bg:chip_bg fg:chip_text"
+format = '[ $symbol](bold fg:runtime_accent bg:chip_bg)[ ($virtualenv) ]($style)'
 
 [rust]
 symbol = ""
@@ -232,6 +234,11 @@ green = '77'
 white = '231'
 gray = '242'
 black = '16'
+chip_bg = '#45475a'
+chip_text = '#cdd6f4'
+runtime_accent = '#b4befe'
+env_accent = '#94e2d5'
+time_accent = '#89dceb'
 
 [palettes.pastel_brite]
 bg0 = '183'
@@ -248,6 +255,11 @@ green = '77'
 white = '231'
 gray = '242'
 black = '16'
+chip_bg = '#45475a'
+chip_text = '#cdd6f4'
+runtime_accent = '#b4befe'
+env_accent = '#94e2d5'
+time_accent = '#89dceb'
 
 [palettes.catppuccin_mocha]
 bg0 = '211'
@@ -264,3 +276,8 @@ green = '77'
 white = '231'
 gray = '242'
 black = '16'
+chip_bg = '#45475a'
+chip_text = '#cdd6f4'
+runtime_accent = '#b4befe'
+env_accent = '#94e2d5'
+time_accent = '#89dceb'
