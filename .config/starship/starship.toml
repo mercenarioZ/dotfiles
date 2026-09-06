@@ -27,7 +27,6 @@ $php\
 $rust\
 $scala\
 [](fg:bg3)\
-$cmd_duration\
 $fill\
 [](fg:chip_bg)\
 $golang\
@@ -93,15 +92,6 @@ disabled = false
 time_format = "%R"
 style = "bold bg:chip_bg fg:chip_text"
 format = '[  ](bold fg:time_accent bg:chip_bg)[ $time ]($style)'
-
-[cmd_duration]
-disabled = false
-show_milliseconds = true
-show_notifications = false
-min_time = 100
-min_time_to_notify = 45000
-format = "[  in $duration ]($style)"
-style = "fg:lavender"
 
 [character]
 format = """
