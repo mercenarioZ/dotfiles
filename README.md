@@ -14,6 +14,7 @@ files are called out below; do not link every directory on every operating syste
 | Fastfetch | `.config/fastfetch` | Yes | Yes | Not wired | Shared Unix setup in this repository. |
 | tmux | `.config/tmux` | Yes | Yes | No | Automatically loads `macos.conf` or `linux.conf`. Linux clipboard support assumes Wayland and `wl-copy`. |
 | Ghostty | `.config/ghostty` | Yes | Yes | No | Uses a different config file on each platform. |
+| LazyGit | `.config/lazygit/config.yml` | Yes | Yes | Not wired | Dark selection background keeps colored text readable. |
 | Hyprland + Quickshell | `.config/hypr`, `.config/quickshell` | No | Yes | No | **Linux/Wayland only.** |
 | Hunk + Jujutsu | `.config/hunk`, `.config/jj` | Yes | Yes | Not wired | Shared CLI configuration; generated state stays local. |
 | PowerShell | `.config/powershell` | No | No | Yes | **Windows-only setup in this repository.** |
@@ -81,6 +82,14 @@ link_config "$DOTFILES/.config/ghostty/linux.conf" "$HOME/.config/ghostty/config
 
 The macOS file contains `macos-option-as-alt`; the Linux file contains GTK,
 quick-terminal, and Linux desktop integration settings.
+
+### LazyGit (macOS or Linux)
+
+```sh
+LAZYGIT_CONFIG_DIR="$(lazygit --print-config-dir)"
+mkdir -p "$LAZYGIT_CONFIG_DIR"
+link_config "$DOTFILES/.config/lazygit/config.yml" "$LAZYGIT_CONFIG_DIR/config.yml"
+```
 
 ### Linux/Wayland desktop only
 

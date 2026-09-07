@@ -1,0 +1,12 @@
+gui:
+  nerdFontsVersion: '3'
+  showFileIcons: true
+  theme:
+    # Keep colored branch names readable on the selected row.
+    selectedLineBgColor:
+      - '#2e3440'
+      - bold
+    inactiveViewSelectedLineBgColor:
+      - '#2e3440'
+    defaultFgColor:
+      - '#d8dee9'
