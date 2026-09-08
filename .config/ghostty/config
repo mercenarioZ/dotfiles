@@ -1,10 +1,10 @@
-background-opacity = 0.95
-background-blur-radius = 20
+background-opacity = 0.8
+background-blur-radius = 30
 background = #141521
 minimum-contrast = 1
 
 font-family = BlexMono Nerd Font
-font-size = 15
+font-size = 14
 font-thicken = true
 
 cursor-color = fcee86
