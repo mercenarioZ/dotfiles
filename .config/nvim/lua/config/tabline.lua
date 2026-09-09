@@ -1,11 +1,12 @@
 local M = {}
+local mini_icons = require("mini.icons")
 
 function M.setup()
-	local colors = require("catppuccin.palettes").get_palette("frappe")
+	local colors = require("catppuccin.palettes").get_palette("mocha")
 
 	vim.api.nvim_set_hl(0, "CustomTabActive", {
 		fg = colors.crust,
-		bg = colors.yellow,
+		bg = colors.mauve,
 		bold = true,
 	})
 
@@ -15,7 +16,7 @@ function M.setup()
 	})
 
 	vim.api.nvim_set_hl(0, "CustomTabEdgeActive", {
-		fg = colors.yellow,
+		fg = colors.mauve, -- should be the same as the custom tab bg color
 		bg = "NONE",
 	})
 
@@ -46,11 +47,7 @@ function M.render()
 			filename = "[No name]"
 		end
 
-		local icon = ""
-
-		if MiniIcons and MiniIcons.get then
-			icon = MiniIcons.get("file", filename) .. " "
-		end
+		local icon = mini_icons.get("file", filename) .. " "
 
 		local modified = vim.bo[buf].modified and "[+] " or ""
 		local title = "  " .. modified .. icon .. filename .. "  "
@@ -61,7 +58,11 @@ function M.render()
 
 		parts[#parts + 1] = string.format(
 			"%%%dT%%#CustomTabEdge%s#%%#CustomTab%s#%s%%#CustomTabEdge%s#%%T",
-			index, state, state, title, state
+			index,
+			state,
+			state,
+			title,
+			state
 		)
 	end
 
