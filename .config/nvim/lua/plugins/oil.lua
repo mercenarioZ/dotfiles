@@ -25,12 +25,20 @@ return {
 		},
 
 		keymaps = {
+			["h"] = { "actions.parent", mode = "n" },
 			["q"] = { "actions.close", mode = "n" },
 		},
 	},
 	lazy = false,
 	keys = {
-		{ "sf", "<cmd>Oil --float<cr>", mode = "n", desc = "Explorer Oil (file dir)" },
+		{
+			"sf",
+			function()
+				require("oil").open_float(nil, { preview = {} })
+			end,
+			mode = "n",
+			desc = "Explorer Oil (file dir)",
+		},
 		{
 			"<leader>e",
 			function()
