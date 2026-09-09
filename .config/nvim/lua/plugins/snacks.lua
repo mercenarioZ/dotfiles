@@ -1,18 +1,17 @@
 return {
 	"folke/snacks.nvim",
+	keys = {
+		{ "<leader>e", false },
+		{ "<leader>E", false },
+		{ "<leader>fe", false },
+		{ "<leader>fE", false },
+	},
 	opts = {
 		explorer = {
-			hidden = true,
-			ignored = false,
-			exclude = { ".git", ".git/**", "*/.git/*", ".jj", ".jj/**", "*/.jj/*" },
+			enabled = false,
 		},
 		picker = {
 			sources = {
-				explorer = {
-					hidden = true,
-					ignored = false,
-					exclude = { ".git", ".git/**", "*/.git/*", ".jj", ".jj/**", "*/.jj/*" },
-				},
 				files = {
 					hidden = true,
 					ignored = false,
