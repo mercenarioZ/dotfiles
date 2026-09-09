@@ -23,25 +23,30 @@ return {
 				return name == ".git" or name == ".jj"
 			end,
 		},
+
+		keymaps = {
+			["q"] = { "actions.close", mode = "n" },
+		},
 	},
 	lazy = false,
 	keys = {
+		{ "sf", "<cmd>Oil --float<cr>", mode = "n", desc = "Explorer Oil (file dir)" },
 		{
 			"<leader>e",
 			function()
-				require("oil").open_float(LazyVim.root(), { preview = {} })
+				require("oil").open_float(LazyVim.root())
 			end,
 			desc = "Explorer Oil (root dir)",
 		},
 		{
 			"<leader>E",
 			function()
-				require("oil").open_float(vim.fn.getcwd(), { preview = {} })
+				require("oil").open_float(vim.fn.getcwd())
 			end,
 			desc = "Explorer Oil (cwd)",
 		},
 		{ "<leader>fe", "<leader>e", desc = "Explorer Oil (root dir)", remap = true },
 		{ "<leader>fE", "<leader>E", desc = "Explorer Oil (cwd)", remap = true },
-		{ "-", "<cmd>Oil --float --preview<cr>", desc = "Open parent directory" },
+		{ "-", "<cmd>Oil --float<cr>", desc = "Open parent directory" },
 	},
 }
