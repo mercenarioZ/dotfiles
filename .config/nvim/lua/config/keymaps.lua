@@ -11,7 +11,7 @@ keymap.set("i", "jk", "<Esc>", opts)
 
 -- new tab
 keymap.set("n", "te", ":tabedit<CR>", opts)
-keymap.set("n", "<Tab>", ":bnext<CR>", opts)
+keymap.set("n", "<tab>", ":tabnext<CR>", opts)
 keymap.set("n", "<leader>q", ":bdelete<CR>", opts)
 
 -- move pointer to the first non-whitespace, to the end of line
