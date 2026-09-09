@@ -50,7 +50,7 @@ function M.render()
 		local icon = mini_icons.get("file", filename) .. " "
 
 		local modified = vim.bo[buf].modified and "[+] " or ""
-		local title = "  " .. modified .. icon .. filename .. "  "
+		local title = " " .. modified .. icon .. filename .. " "
 
 		title = title:gsub("%%", "%%%%")
 
