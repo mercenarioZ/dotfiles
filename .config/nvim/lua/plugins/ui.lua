@@ -23,6 +23,14 @@ return {
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		opts = function(_, opts)
+			opts.views = opts.views or {}
+			opts.views.cmdline_popup = vim.tbl_deep_extend("force", opts.views.cmdline_popup or {}, {
+				position = {
+					row = "50%",
+					col = "50%",
+				},
+			})
+
 			table.insert(opts.routes, {
 				filter = {
 					event = "notify",
