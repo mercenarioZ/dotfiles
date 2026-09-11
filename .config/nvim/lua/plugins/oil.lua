@@ -25,7 +25,6 @@ return {
 		},
 
 		keymaps = {
-			["h"] = { "actions.parent", mode = "n" },
 			["q"] = { "actions.close", mode = "n" },
 		},
 	},
