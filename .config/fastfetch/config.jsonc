@@ -1,11 +1,12 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
   "modules": [
-    "title",
     "separator",
+    "break",
     "os",
     "host",
     "uptime",
+    "break",
     "shell",
     "display",
     "de",
@@ -13,16 +14,10 @@
     "terminal",
     "terminalfont",
     "cpu",
-    "memory",
     "disk",
+    "break",
     "battery",
     "poweradapter",
-    "break",
-    {
-      "type": "disk",
-      "key": "OS age",
-      "format": "{days} days"
-    }
   ],
   "logo": {
     "source": "~/.config/fastfetch/logo.txt",
