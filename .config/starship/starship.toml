@@ -1,19 +1,10 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-palette = 'pastel_brite'
-# [pastel, pastel_brite, catppuccin_mocha]
-
 format = """
-[╭](gray)\
-[](bg0)\
-$os\
 $username\
-[](fg:bg0 bg:bg1)\
 $directory\
-[](fg:bg1 bg:bg2)\
 $git_branch\
 $git_status\
-[](fg:bg2 bg:bg3)\
 $c\
 $cpp\
 $elixir\
@@ -26,9 +17,6 @@ $nim\
 $php\
 $rust\
 $scala\
-[](fg:bg3)\
-$fill\
-[](fg:chip_bg)\
 $golang\
 $java\
 $nodejs\
@@ -36,238 +24,133 @@ $python\
 $conda\
 $docker_context\
 $pixi\
-$time\
-[](fg:chip_bg)\
 $line_break\
-[╰](gray)\
 $character
 """
-
-[fill]
-symbol = " "
 
 [username]
 disabled = false
 show_always = false
-style_user = "bg:bg0 fg:text"
-style_root = "bg:bg0 fg:text"
-# symbol = "󰀄"
-format = '[$user ]($style)'
-
-[os]
-disabled = false
-style = "bg:bg0 fg:text"
-
-[os.symbols]
-Windows = "  "
-Ubuntu = " 󰕈 "
-SUSE = "  "
-Raspbian = " 󰐿 "
-Mint = " 󰣭 "
-Macos = " 󰀵 "
-Manjaro = "  "
-Linux = " 󰌽 "
-Gentoo = " 󰣨 "
-Fedora = " 󰣛 "
-Alpine = "  "
-Amazon = "  "
-Android = "  "
-Arch = " 󰣇 "
-Artix = " 󰣇 "
-CentOS = "  "
-Debian = " 󰣚 "
-Redhat = " 󱄛 "
-RedHatEnterprise = " 󱄛 "
+style_user = "green"
+style_root = "bold red"
+format = '[$user]($style) '
 
 [directory]
 disabled = false
-style = "bg:bg1 fg:text"
-# home_symbol = ""
-format = "[  $path ]($style)"
+style = "bold cyan"
+format = "[ $path]($style) "
 truncation_length = 2
-truncation_symbol = "…/"
-
-[time]
-disabled = false
-time_format = "%R"
-style = "bold bg:chip_bg fg:chip_text"
-format = '[  ](bold fg:time_accent bg:chip_bg)[ $time ]($style)'
+truncation_symbol = ".../"
 
 [character]
-format = """
-[╰─$symbol](fg:overlay1) """
-success_symbol = '[](fg:green_bright)'
-error_symbol = '[](fg:bold red)'
+format = '$symbol '
+success_symbol = '[>](green)'
+error_symbol = '[>](bold red)'
+vimcmd_symbol = '[<](green)'
+vimcmd_replace_one_symbol = '[<](purple)'
+vimcmd_replace_symbol = '[<](purple)'
+vimcmd_visual_symbol = '[<](yellow)'
 
 [git_branch]
-symbol = ""
-style = "bg:bg2 fg:text"
-format = '[ $symbol $branch ]($style)'
+symbol = ""
+style = "yellow"
+format = '[$symbol $branch]($style) '
 truncation_length = 16
-truncation_symbol = "…"
+truncation_symbol = "..."
 
 [git_status]
 disabled = false
-style = "bg:bg2 fg:text"
-format = '[($all_status$ahead_behind)]($style)'
+style = "yellow"
+format = '([$all_status$ahead_behind]($style))'
+conflicted = '=$count '
+ahead = '↑$count '
+behind = '↓$count '
+diverged = '↑$ahead_count ↓$behind_count '
+up_to_date = ''
+untracked = '?$count '
+stashed = '\$$count '
+modified = '!$count '
+staged = '+$count '
+renamed = '»$count '
+deleted = '✘$count '
+typechanged = '~$count '
 
 [conda]
-symbol = ""
-style = "bold bg:chip_bg fg:chip_text"
-format = '[ $symbol](bold fg:env_accent bg:chip_bg)[ ($environment) ]($style)'
+style = "green"
+format = '[conda $environment]($style) '
 ignore_base = false
 
 [docker_context]
-symbol = ""
-style = "bold bg:chip_bg fg:chip_text"
-format = '[ $symbol](bold fg:env_accent bg:chip_bg)[ ($context) ]($style)'
+style = "green"
+format = '[docker $context]($style) '
 
 [pixi]
-style = "bold bg:chip_bg fg:chip_text"
-format = '[ $symbol](bold fg:env_accent bg:chip_bg)[ ($version) ($environment) ]($style)'
+style = "green"
+format = '[pixi( $version)( $environment)]($style) '
 
 [c]
-symbol = ""
-style = "bg:bg3 fg:text"
-format = '[ $symbol ($version) ]($style)'
+style = "purple"
+format = '[c( $version)]($style) '
 
 [cpp]
-symbol = ""
-style = "bg:bg3 fg:text"
-format = '[ $symbol ($version) ]($style)'
+style = "purple"
+format = '[cpp( $version)]($style) '
 
 [elixir]
-symbol = ""
-style = "bg:bg3 fg:text"
-format = '[ $symbol ($version) ]($style)'
+style = "purple"
+format = '[elixir( $version)]($style) '
 
 [elm]
-symbol = ""
-style = "bg:bg3 fg:text"
-format = '[ $symbol ($version) ]($style)'
+style = "purple"
+format = '[elm( $version)]($style) '
 
 [golang]
-symbol = ""
-style = "bold bg:chip_bg fg:chip_text"
-format = '[ $symbol](bold fg:runtime_accent bg:chip_bg)[ ($version) ]($style)'
+style = "purple"
+format = '[go( $version)]($style) '
 
 [gradle]
-symbol = ""
-style = "bg:bg3 fg:text"
-format = '[ $symbol ($version) ]($style)'
+style = "purple"
+format = '[gradle( $version)]($style) '
 
 [haskell]
-symbol = ""
-style = "bg:bg3 fg:text"
-format = '[ $symbol ($version) ]($style)'
+style = "purple"
+format = '[haskell( $version)]($style) '
 
 [java]
-symbol = ""
-style = "bold bg:chip_bg fg:chip_text"
-format = '[ $symbol](bold fg:runtime_accent bg:chip_bg)[ ($version) ]($style)'
+style = "purple"
+format = '[java( $version)]($style) '
 
 [julia]
-symbol = ""
-style = "bg:bg3 fg:text"
-format = '[ $symbol ($version) ]($style)'
+style = "purple"
+format = '[julia( $version)]($style) '
 
 [kotlin]
-symbol = ""
-style = "bg:bg3 fg:text"
-format = '[ $symbol ($version) ]($style)'
+style = "purple"
+format = '[kotlin( $version)]($style) '
 
 [nodejs]
-symbol = ""
-style = "bold bg:chip_bg fg:chip_text"
-format = '[ $symbol](bold fg:runtime_accent bg:chip_bg)[ ($version) ]($style)'
+style = "purple"
+format = '[node( $version)]($style) '
 detect_files = ["package.json"]
 detect_extensions = ["js", "ts"]
 detect_folders = ["node_modules"]
 
 [nim]
-symbol = "󰆥"
-style = "bg:bg3 fg:text"
-format = '[ $symbol ($version) ]($style)'
+style = "purple"
+format = '[nim( $version)]($style) '
 
 [php]
-symbol = ""
-style = "bg:bg3 fg:text"
-format = '[ $symbol ($version) ]($style)'
+style = "purple"
+format = '[php( $version)]($style) '
 
 [python]
-symbol = ""
-style = "bold bg:chip_bg fg:chip_text"
-format = '[ $symbol](bold fg:runtime_accent bg:chip_bg)[ ($virtualenv) ]($style)'
+style = "purple"
+format = '[python( $version)( $virtualenv)]($style) '
 
 [rust]
-symbol = ""
-style = "bg:bg3 fg:text"
-format = '[ $symbol ($version) ]($style)'
+style = "purple"
+format = '[rust( $version)]($style) '
 
 [scala]
-symbol = ""
-style = "bg:bg3 fg:text"
-format = '[ $symbol ($version) ]($style)'
-
-[palettes.pastel]
-bg0 = '90'
-bg1 = '168'
-bg2 = '216'
-bg3 = '110'
-bg4 = '30'
-bg5 = '24'
-text = '231'
-lavender = '147'
-red = '161'
-yellow = '222'
-green = '77'
-white = '231'
-gray = '242'
-black = '16'
-chip_bg = '#45475a'
-chip_text = '#cdd6f4'
-runtime_accent = '#b4befe'
-env_accent = '#94e2d5'
-time_accent = '#89dceb'
-
-[palettes.pastel_brite]
-bg0 = '183'
-bg1 = '211'
-bg2 = '216'
-bg3 = '111'
-bg4 = '116'
-bg5 = '74'
-text = '16'
-lavender = '147'
-red = '161'
-yellow = '222'
-green = '77'
-white = '231'
-gray = '242'
-black = '16'
-chip_bg = '#45475a'
-chip_text = '#cdd6f4'
-runtime_accent = '#b4befe'
-env_accent = '#94e2d5'
-time_accent = '#89dceb'
-
-[palettes.catppuccin_mocha]
-bg0 = '211'
-bg1 = '216'
-bg2 = '223'
-bg3 = '151'
-bg4 = '117'
-bg5 = '147'
-text = '16'
-lavender = '147'
-red = '161'
-yellow = '222'
-green = '77'
-white = '231'
-gray = '242'
-black = '16'
-chip_bg = '#45475a'
-chip_text = '#cdd6f4'
-runtime_accent = '#b4befe'
-env_accent = '#94e2d5'
-time_accent = '#89dceb'
+style = "purple"
+format = '[scala( $version)]($style) '
