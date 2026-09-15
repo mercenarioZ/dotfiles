@@ -13,6 +13,10 @@ return {
 						fg = colors.overlay0,
 						italic = true,
 					},
+					SnacksTitle = { fg = colors.crust, bg = colors.red },
+					SnacksPickerInputTitle = { fg = colors.crust, bg = colors.red },
+					SnacksPickerPreviewTitle = { fg = colors.crust, bg = colors.green },
+					SnacksPickerToggle = { fg = colors.mantle, bg = colors.red, bold = true, italic = true },
 				}
 			end,
 			float = {
