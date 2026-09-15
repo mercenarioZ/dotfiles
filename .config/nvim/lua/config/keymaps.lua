@@ -29,9 +29,10 @@ end, opts)
 keymap.set("n", "<leader>yc", function()
 	local diagnostics = vim.diagnostic.get(0, { lnum = vim.fn.line(".") - 1 })
 
-	local messages = vim.tbl_map(function(diagnostic)
-		return diagnostic.message
-	end, diagnostics)
+	local messages = {}
+	for _, diagnostic in ipairs(diagnostics) do
+		table.insert(messages, diagnostic.message)
+	end
 
 	vim.fn.setreg("+", table.concat(messages, "\n"))
 	vim.notify(#messages > 0 and "Diagnostic copied" or "No diagnostic on current line")
