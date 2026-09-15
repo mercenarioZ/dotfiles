@@ -26,6 +26,17 @@ keymap.set("n", "<C-m>", function()
 	})
 end, opts)
 
+keymap.set("n", "<leader>yc", function()
+	local diagnostics = vim.diagnostic.get(0, { lnum = vim.fn.line(".") - 1 })
+
+	local messages = vim.tbl_map(function(diagnostic)
+		return diagnostic.message
+	end, diagnostics)
+
+	vim.fn.setreg("+", table.concat(messages, "\n"))
+	vim.notify(#messages > 0 and "Diagnostic copied" or "No diagnostic on current line")
+end, opts)
+
 -- Vertical split resize
 keymap.set("n", "<leader>+", ":vertical resize +5<CR>", opts)
 keymap.set("n", "<leader>-", ":vertical resize -5<CR>", opts)
