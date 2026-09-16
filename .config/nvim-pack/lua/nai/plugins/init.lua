@@ -28,6 +28,7 @@ vim.pack.add({
 	{ src = gh("windwp/nvim-ts-autotag") },
 	{ src = gh("stevearc/conform.nvim") },
 	{ src = gh("mfussenegger/nvim-lint") },
+	{ src = gh("nvim-lualine/lualine.nvim") },
 })
 
 vim.cmd.colorscheme("tokyonight")
@@ -38,3 +39,4 @@ require("nai.plugins.blink")
 require("nai.plugins.treesitter")
 require("nai.plugins.formatting")
 require("nai.plugins.linting")
+require("nai.plugins.lualine")
