@@ -1,8 +1,7 @@
 local lint = require("lint")
 
-lint.linters_by_ft = {
-	markdown = { "markdownlint-cli2" },
-}
+-- markdown is intentionally not linted, prose there is free-form
+lint.linters_by_ft = {}
 
 -- FileType, not BufReadPost: our autocmd is defined before filetype detection,
 -- so on BufReadPost the filetype is still empty and no linter matches

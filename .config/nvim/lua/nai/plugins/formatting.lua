@@ -1,7 +1,7 @@
 local conform = require("conform")
 
 -- markdown chain shared by .md and .mdx
-local markdown = { "prettier", "markdownlint-cli2", "markdown-toc" }
+local markdown = { "prettier", "markdown-toc" }
 
 conform.setup({
 	default_format_opts = {
@@ -29,15 +29,6 @@ conform.setup({
 						return true
 					end
 				end
-			end,
-		},
-		-- only run when markdownlint actually reported something to fix
-		["markdownlint-cli2"] = {
-			condition = function(_, ctx)
-				local diagnostics = vim.tbl_filter(function(d)
-					return d.source == "markdownlint"
-				end, vim.diagnostic.get(ctx.buf))
-				return #diagnostics > 0
 			end,
 		},
 		injected = { options = { ignore_errors = true } },
