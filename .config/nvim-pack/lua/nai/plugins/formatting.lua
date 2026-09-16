@@ -11,6 +11,7 @@ conform.setup({
 	},
 
 	formatters_by_ft = {
+		astro = { "prettier" },
 		lua = { "stylua" },
 		sh = { "shfmt" },
 		c = { "clang_format" },

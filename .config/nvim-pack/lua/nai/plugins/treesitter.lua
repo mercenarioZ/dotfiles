@@ -7,6 +7,7 @@ TS.setup({
 
 -- no-op for parsers that are already installed
 TS.install({
+	"astro",
 	"bash",
 	"c",
 	"cmake",
@@ -34,6 +35,7 @@ TS.install({
 	"tsx",
 	"typescript",
 	"vim",
+	"vue",
 	"vimdoc",
 	"xml",
 	"yaml",

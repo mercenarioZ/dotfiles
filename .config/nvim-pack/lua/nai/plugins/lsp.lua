@@ -4,13 +4,16 @@ require("mason").setup({
 })
 
 vim.lsp.enable({
+	"astro",
 	"clangd",
 	"cssls",
 	"gopls",
 	"html",
 	"lua_ls",
+	"marksman",
 	"tailwindcss",
 	"vtsls",
+	"vue_ls",
 	"yamlls",
 })
 
