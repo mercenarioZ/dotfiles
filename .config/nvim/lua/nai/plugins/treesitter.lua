@@ -1,10 +1,5 @@
 local TS = require("nvim-treesitter")
 
-TS.setup({
-	-- reuse parsers the old config already compiled
-	install_dir = vim.fs.normalize("~/.local/share/nvim/site"),
-})
-
 -- no-op for parsers that are already installed
 TS.install({
 	"astro",

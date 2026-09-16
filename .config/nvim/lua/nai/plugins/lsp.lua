@@ -1,7 +1,4 @@
--- reuse servers already installed by the old config instead of reinstalling
-require("mason").setup({
-	install_root_dir = vim.fs.normalize("~/.local/share/nvim/mason"),
-})
+require("mason").setup()
 
 vim.lsp.enable({
 	"astro",
