@@ -15,6 +15,12 @@ require("everforest").setup({
 		-- incline filename badge: purple when focused, muted otherwise
 		hl.InclineNormal = { fg = palette.bg0, bg = palette.purple }
 		hl.InclineNormalNC = { fg = palette.grey1, bg = palette.bg1 }
+		-- blink's completion menu (insert and cmdline) links to Pmenu, which
+		-- float_style = "blend" leaves opaque; clear its background to match floats
+		hl.BlinkCmpMenu = { fg = palette.fg, bg = palette.none }
+		hl.BlinkCmpMenuBorder = { fg = palette.grey1, bg = palette.none }
+		-- a bg-only "none" counts as empty and blink's default link wins, so link instead
+		hl.BlinkCmpScrollBarGutter = { link = "Normal" }
 	end,
 })
 
