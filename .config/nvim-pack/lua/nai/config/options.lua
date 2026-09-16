@@ -47,7 +47,7 @@ opt.fillchars = {
 	fold = " ",
 	foldsep = " ",
 	diff = "\u{2571}", -- ╱ light diagonal, for deleted diff lines
-	eob = " ", -- hide ~ on empty lines
+	eob = "~",
 }
 opt.shortmess:append({ W = true, I = true, c = true, C = true })
 
