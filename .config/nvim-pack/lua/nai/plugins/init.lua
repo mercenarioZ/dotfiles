@@ -31,6 +31,7 @@ vim.pack.add({
 	{ src = gh("mfussenegger/nvim-lint") },
 	{ src = gh("nvim-lualine/lualine.nvim") },
 	{ src = gh("stevearc/oil.nvim") },
+	{ src = gh("lewis6991/gitsigns.nvim") },
 })
 
 -- colorscheme first, so later plugins pick up its highlights
@@ -44,3 +45,4 @@ require("nai.plugins.formatting")
 require("nai.plugins.linting")
 require("nai.plugins.lualine")
 require("nai.plugins.oil")
+require("nai.plugins.gitsigns")

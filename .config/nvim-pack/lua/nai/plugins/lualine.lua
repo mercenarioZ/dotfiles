@@ -15,7 +15,23 @@ require("lualine").setup({
 			-- path relative to cwd instead of just the file name
 			{ "filename", path = 1 },
 		},
-		lualine_x = { "diff" },
+
+		lualine_x = {
+			{
+				"diff",
+				-- reuse gitsigns' counts, no git diff again
+				source = function()
+					local status = vim.b.gitsigns_status_dict
+					if status then
+						return {
+							added = status.added,
+							modified = status.changed,
+							removed = status.removed,
+						}
+					end
+				end,
+			},
+		},
 		lualine_y = {
 			{ "progress", separator = " ", padding = { left = 1, right = 0 } },
 			{ "location", padding = { left = 0, right = 1 } },
