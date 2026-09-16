@@ -1,23 +1,25 @@
-# Dotfiles
+## MercenarioZ's dotfiles
 
 Personal configuration shared across macOS, Linux, and Windows. Platform-specific
 files are called out below; do not link every directory on every operating system.
 
+@craftzdog inspired me a lot, thank u so much!
+
 ## Platform support
 
-| Component | Path | macOS | Linux | Windows | Notes |
-| --- | --- | :---: | :---: | :---: | --- |
-| Neovim | `.config/nvim` | Yes | Yes | Yes | LazyVim-based; Windows uses the mappings in `for_windows/`. |
-| Git | `.gitconfig` | Yes | Yes | Yes | Shared aliases and color settings. |
-| Zsh | `.zshrc` | Yes | Yes | No | Detects Homebrew/Linuxbrew and loads optional tools only when available. |
-| Starship | `.config/starship` | Yes | Yes | Not wired | Used by the shared Zsh config. |
-| Fastfetch | `.config/fastfetch` | Yes | Yes | Not wired | Shared Unix setup in this repository. |
-| tmux | `.config/tmux` | Yes | Yes | No | Automatically loads `macos.conf` or `linux.conf`. Linux clipboard support assumes Wayland and `wl-copy`. |
-| Ghostty | `.config/ghostty` | Yes | Yes | No | Uses a different config file on each platform. |
-| LazyGit | `.config/lazygit/config.yml` | Yes | Yes | Not wired | Dark selection background keeps colored text readable. |
-| Hyprland + Quickshell | `.config/hypr`, `.config/quickshell` | No | Yes | No | **Linux/Wayland only.** |
-| Hunk + Jujutsu | `.config/hunk`, `.config/jj` | Yes | Yes | Not wired | Shared CLI configuration; generated state stays local. |
-| PowerShell | `.config/powershell` | No | No | Yes | **Windows-only setup in this repository.** |
+| Component             | Path                                 | macOS | Linux |  Windows  | Notes                                                                                                    |
+| --------------------- | ------------------------------------ | :---: | :---: | :-------: | -------------------------------------------------------------------------------------------------------- |
+| Neovim                | `.config/nvim`                       |  Yes  |  Yes  |    Yes    | Plain `vim.pack` config; Windows uses the mappings in `for_windows/` (outdated).                         |
+| Git                   | `.gitconfig`                         |  Yes  |  Yes  |    Yes    | Shared aliases and color settings.                                                                       |
+| Zsh                   | `.zshrc`                             |  Yes  |  Yes  |    No     | Detects Homebrew/Linuxbrew and loads optional tools only when available.                                 |
+| Starship              | `.config/starship`                   |  Yes  |  Yes  | Not wired | Used by the shared Zsh config.                                                                           |
+| Fastfetch             | `.config/fastfetch`                  |  Yes  |  Yes  | Not wired | Shared Unix setup in this repository.                                                                    |
+| tmux                  | `.config/tmux`                       |  Yes  |  Yes  |    No     | Automatically loads `macos.conf` or `linux.conf`. Linux clipboard support assumes Wayland and `wl-copy`. |
+| Ghostty               | `.config/ghostty`                    |  Yes  |  Yes  |    No     | Uses a different config file on each platform.                                                           |
+| LazyGit               | `.config/lazygit/config.yml`         |  Yes  |  Yes  | Not wired | Dark selection background keeps colored text readable.                                                   |
+| Hyprland + Quickshell | `.config/hypr`, `.config/quickshell` |  No   |  Yes  |    No     | **Linux/Wayland only.**                                                                                  |
+| Hunk + Jujutsu        | `.config/hunk`, `.config/jj`         |  Yes  |  Yes  | Not wired | Shared CLI configuration; generated state stays local.                                                   |
+| PowerShell            | `.config/powershell`                 |  No   |  No   |    Yes    | **Windows-only setup in this repository.**                                                               |
 
 `Not wired` means the application may support that operating system, but this
 repository does not currently provide installation or symlink instructions for it.
@@ -113,18 +115,6 @@ from `.config/hypr/hyprland.lua`, together with the named Quickshell config at
 `.config/quickshell/quiet/`. Hyprlock, Hypridle, Hyprpaper, and Hyprsunset remain
 separate programs with their own `.conf` files in `.config/hypr/`.
 
-Core shortcuts:
-
-- `Super + D` or `Super + Space`: application launcher
-- `Super + O`: control and notification drawer
-- `Super + /`: shortcut manual
-- `Super + Escape`: session menu
-- `Super + Return`: terminal
-- `Super + E`: file manager
-- `Super + 1..0`: switch workspaces 1 through 10
-- `Super + Shift + 1..0`: move the active window to a workspace
-- `Ctrl + Space`: toggle English/Vietnamese input (Unikey VNI)
-
 Runtime helpers: `quickshell`, `hyprpaper`, `hypridle`, `hyprlock`, `hyprsunset`,
 `brightnessctl`, `playerctl`, `fcitx5`, `fcitx5-unikey`, `grim`, `slurp`, `swappy`,
 `wl-copy`, and `xdg-open`.
@@ -142,17 +132,25 @@ speakers, headphones, HDMI, and Bluetooth audio devices.
 
 Requirements:
 
-- Neovim >= **0.11.2**, built with **LuaJIT**
-- Git >= **2.19.0** for partial clone support
-- A C compiler for `nvim-treesitter`
-- A [Nerd Font](https://www.nerdfonts.com/) v3+ for icons (optional)
-- [lazygit](https://github.com/jesseduffield/lazygit) (optional)
-- [ripgrep](https://github.com/BurntSushi/ripgrep) for live grep (optional)
-- [fd](https://github.com/sharkdp/fd) for file finding (optional)
+- Neovim >= **0.12**, for the built-in `vim.pack` plugin manager
+- Git, used by `vim.pack` to install plugins
+- [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md)
+  0.26.1+ and a C compiler, for `nvim-treesitter` to build parsers
+- A [Nerd Font](https://www.nerdfonts.com/) v3+ for icons
+- [ripgrep](https://github.com/BurntSushi/ripgrep) for live grep
+- [fd](https://github.com/sharkdp/fd) for file finding (optional, falls back
+  to ripgrep)
+
+Enabled language servers: astro, clangd, cssls, gopls, html, lua_ls, marksman,
+tailwindcss, vtsls, vue_ls, yamlls. Per-server settings live in
+`.config/nvim/after/lsp/`.
 
 Language servers and tools managed by Mason may have their own runtime
-requirements. For example, JDT LS requires a local Java runtime even when Mason
-has successfully downloaded the server.
+requirements. For example, the Vue, Astro, and TypeScript servers need Node.js
+even when Mason has successfully downloaded them.
+
+The previous LazyVim config is kept in `.config/nvim-lazyvim`. Link it to
+`~/.config/nvim-lazyvim` and run it with `NVIM_APPNAME=nvim-lazyvim nvim`.
 
 ## Zsh setup (macOS and Linux)
 
