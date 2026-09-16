@@ -26,6 +26,8 @@ vim.pack.add({
 	{ src = gh("saghen/blink.cmp"), version = vim.version.range("^1") },
 	{ src = gh("nvim-treesitter/nvim-treesitter"), version = "main" },
 	{ src = gh("windwp/nvim-ts-autotag") },
+	{ src = gh("stevearc/conform.nvim") },
+	{ src = gh("mfussenegger/nvim-lint") },
 })
 
 vim.cmd.colorscheme("tokyonight")
@@ -34,3 +36,5 @@ require("nai.plugins.snacks")
 require("nai.plugins.lsp")
 require("nai.plugins.blink")
 require("nai.plugins.treesitter")
+require("nai.plugins.formatting")
+require("nai.plugins.linting")
