@@ -28,7 +28,6 @@ vim.pack.add({
 	{ src = gh("nvim-treesitter/nvim-treesitter"), version = "main" },
 	{ src = gh("windwp/nvim-ts-autotag") },
 	{ src = gh("stevearc/conform.nvim") },
-	{ src = gh("mfussenegger/nvim-lint") },
 	{ src = gh("nvim-lualine/lualine.nvim") },
 	{ src = gh("stevearc/oil.nvim") },
 	{ src = gh("lewis6991/gitsigns.nvim") },
@@ -47,7 +46,6 @@ require("nai.plugins.lsp")
 require("nai.plugins.blink")
 require("nai.plugins.treesitter")
 require("nai.plugins.formatting")
-require("nai.plugins.linting")
 require("nai.plugins.lualine")
 require("nai.plugins.oil")
 require("nai.plugins.gitsigns")
