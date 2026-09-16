@@ -17,7 +17,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
 })
 
 vim.pack.add({
-	{ src = gh("folke/tokyonight.nvim") },
+	{ src = gh("neanias/everforest-nvim") },
 	{ src = gh("folke/snacks.nvim") },
 	{ src = gh("mason-org/mason.nvim") },
 	{ src = gh("neovim/nvim-lspconfig") },
@@ -31,8 +31,8 @@ vim.pack.add({
 	{ src = gh("nvim-lualine/lualine.nvim") },
 })
 
-vim.cmd.colorscheme("tokyonight")
-
+-- colorscheme first, so later plugins pick up its highlights
+require("nai.plugins.colorscheme")
 require("nai.plugins.snacks")
 require("nai.plugins.lsp")
 require("nai.plugins.blink")
