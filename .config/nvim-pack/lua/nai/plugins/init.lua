@@ -33,6 +33,7 @@ vim.pack.add({
 	{ src = gh("stevearc/oil.nvim") },
 	{ src = gh("lewis6991/gitsigns.nvim") },
 	{ src = gh("nvim-mini/mini.pairs") },
+	{ src = gh("folke/todo-comments.nvim") },
 })
 
 -- colorscheme first, so later plugins pick up its highlights
@@ -48,3 +49,4 @@ require("nai.plugins.lualine")
 require("nai.plugins.oil")
 require("nai.plugins.gitsigns")
 require("nai.plugins.pairs")
+require("nai.plugins.todo")
