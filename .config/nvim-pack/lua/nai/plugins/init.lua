@@ -18,6 +18,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
 
 vim.pack.add({
 	{ src = gh("neanias/everforest-nvim") },
+	{ src = gh("nvim-mini/mini.icons") },
 	{ src = gh("folke/snacks.nvim") },
 	{ src = gh("mason-org/mason.nvim") },
 	{ src = gh("neovim/nvim-lspconfig") },
@@ -29,10 +30,12 @@ vim.pack.add({
 	{ src = gh("stevearc/conform.nvim") },
 	{ src = gh("mfussenegger/nvim-lint") },
 	{ src = gh("nvim-lualine/lualine.nvim") },
+	{ src = gh("stevearc/oil.nvim") },
 })
 
 -- colorscheme first, so later plugins pick up its highlights
 require("nai.plugins.colorscheme")
+require("nai.plugins.icons")
 require("nai.plugins.snacks")
 require("nai.plugins.lsp")
 require("nai.plugins.blink")
@@ -40,3 +43,4 @@ require("nai.plugins.treesitter")
 require("nai.plugins.formatting")
 require("nai.plugins.linting")
 require("nai.plugins.lualine")
+require("nai.plugins.oil")
