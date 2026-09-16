@@ -35,6 +35,7 @@ vim.pack.add({
 	{ src = gh("nvim-mini/mini.pairs") },
 	{ src = gh("folke/todo-comments.nvim") },
 	{ src = gh("b0o/incline.nvim") },
+	{ src = gh("brenoprata10/nvim-highlight-colors") },
 })
 
 -- colorscheme first, so later plugins pick up its highlights
@@ -52,3 +53,4 @@ require("nai.plugins.gitsigns")
 require("nai.plugins.pairs")
 require("nai.plugins.todo")
 require("nai.plugins.incline")
+require("nai.plugins.colors")
