@@ -11,6 +11,9 @@ return {
 			enabled = false,
 		},
 		picker = {
+			formatters = {
+				file = { min_width = 100 },
+			},
 			sources = {
 				files = {
 					hidden = true,
