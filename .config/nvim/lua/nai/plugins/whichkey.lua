@@ -1,8 +1,15 @@
 local wk = require("which-key")
 
 wk.setup({
-	-- compact popup at the bottom right, same as LazyVim
+	-- compact popup from the helix preset
 	preset = "helix",
+	win = {
+		-- center of the screen instead of the helix bottom right
+		col = 0.5,
+		row = 0.5,
+		-- stay centered even when the cursor is behind the popup
+		no_overlap = false,
+	},
 	-- names for prefixes; the keys under them are listed from each keymap's desc
 	spec = {
 		{
