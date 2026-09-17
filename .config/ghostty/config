@@ -1,8 +1,6 @@
-background-opacity = 0.9
-background-blur-radius = 25
+background-opacity = 0.94
+background-blur-radius = 28
 theme = Everforest Dark Hard
-# match nvim everforest medium bg0, theme default is the darker hard bg_dim
-background = #2d353b
 minimum-contrast = 1
 
 font-family = BlexMono Nerd Font
