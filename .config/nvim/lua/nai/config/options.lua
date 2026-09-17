@@ -90,6 +90,18 @@ vim.treesitter.language.register("markdown", "markdown.mdx")
 -- tabline: file name only, no close button
 local tabline_icon_hls = {}
 
+-- use icon same as lualine's diagnostic, display next to the line numbers
+vim.diagnostic.config({
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = "\u{f015a}",
+			[vim.diagnostic.severity.WARN] = "\u{f002a}",
+			[vim.diagnostic.severity.INFO] = "\u{f02fd}",
+			[vim.diagnostic.severity.HINT] = "\u{f0336}",
+		},
+	},
+})
+
 -- icon color on the TabLine bg, created once per icon color
 local function tabline_icon_hl(icon_hl)
 	local group = "NaiTabLine" .. icon_hl
