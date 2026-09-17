@@ -36,6 +36,7 @@ opt.termguicolors = true
 opt.signcolumn = "yes"
 opt.laststatus = 3 -- one global statusline
 opt.cmdheight = 0
+opt.showcmdloc = "statusline" -- pending keys go to %S in the statusline
 opt.showmode = false
 opt.ruler = false
 opt.pumheight = 10

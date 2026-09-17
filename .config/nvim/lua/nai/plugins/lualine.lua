@@ -1,3 +1,8 @@
+-- which-key feeds internal key codes that %S renders as "~@ý", strip them
+function _G.nai_showcmd()
+	return (vim.api.nvim_eval_statusline("%S", {}).str:gsub("~@.", ""))
+end
+
 require("lualine").setup({
 	options = {
 		-- follow the active colorscheme
@@ -17,6 +22,8 @@ require("lualine").setup({
 		},
 
 		lualine_x = {
+			"%{reg_recording() != '' ? 'recording @' . reg_recording() : ''}",
+			"%{v:lua.nai_showcmd()}", -- they are Vimscript btw
 			{
 				"diff",
 				-- reuse gitsigns' counts, no git diff again
