@@ -1,7 +1,7 @@
 local conform = require("conform")
 
 -- markdown chain shared by .md and .mdx
-local markdown = { "prettier", "markdown-toc" }
+local markdown = { "prettier" }
 
 conform.setup({
 	default_format_opts = {
@@ -21,16 +21,6 @@ conform.setup({
 	},
 
 	formatters = {
-		-- only run when the file has a <!-- toc --> marker
-		["markdown-toc"] = {
-			condition = function(_, ctx)
-				for _, line in ipairs(vim.api.nvim_buf_get_lines(ctx.buf, 0, -1, false)) do
-					if line:find("<!%-%- toc %-%->") then
-						return true
-					end
-				end
-			end,
-		},
 		injected = { options = { ignore_errors = true } },
 	},
 
