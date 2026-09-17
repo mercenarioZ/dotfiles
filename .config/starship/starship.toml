@@ -76,81 +76,100 @@ deleted = '✘$count '
 typechanged = '~$count '
 
 [conda]
+symbol = " "
 style = "green"
-format = '[conda $environment]($style) '
+format = '[$symbol$environment]($style) '
 ignore_base = false
 
 [docker_context]
+symbol = " "
 style = "green"
-format = '[docker $context]($style) '
+format = '[$symbol$context]($style) '
 
 [pixi]
+symbol = "󰏗 "
 style = "green"
-format = '[pixi( $version)( $environment)]($style) '
+format = '[$symbol($version)( $environment)]($style) '
 
 [c]
+symbol = " "
 style = "purple"
-format = '[c( $version)]($style) '
+format = '[$symbol($version)]($style) '
 
 [cpp]
+symbol = " "
 style = "purple"
-format = '[cpp( $version)]($style) '
+format = '[$symbol($version)]($style) '
 
 [elixir]
+symbol = " "
 style = "purple"
-format = '[elixir( $version)]($style) '
+format = '[$symbol($version)]($style) '
 
 [elm]
+symbol = " "
 style = "purple"
-format = '[elm( $version)]($style) '
+format = '[$symbol($version)]($style) '
 
 [golang]
+symbol = " "
 style = "purple"
-format = '[go( $version)]($style) '
+format = '[$symbol($version)]($style) '
 
 [gradle]
+symbol = " "
 style = "purple"
-format = '[gradle( $version)]($style) '
+format = '[$symbol($version)]($style) '
 
 [haskell]
+symbol = " "
 style = "purple"
-format = '[haskell( $version)]($style) '
+format = '[$symbol($version)]($style) '
 
 [java]
+symbol = " "
 style = "purple"
-format = '[java( $version)]($style) '
+format = '[$symbol($version)]($style) '
 
 [julia]
+symbol = " "
 style = "purple"
-format = '[julia( $version)]($style) '
+format = '[$symbol($version)]($style) '
 
 [kotlin]
+symbol = " "
 style = "purple"
-format = '[kotlin( $version)]($style) '
+format = '[$symbol($version)]($style) '
 
 [nodejs]
+symbol = " "
 style = "purple"
-format = '[node( $version)]($style) '
+format = '[$symbol($version)]($style) '
 detect_files = ["package.json"]
 detect_extensions = ["js", "ts"]
 detect_folders = ["node_modules"]
 
 [nim]
+symbol = "󰆥 "
 style = "purple"
-format = '[nim( $version)]($style) '
+format = '[$symbol($version)]($style) '
 
 [php]
+symbol = " "
 style = "purple"
-format = '[php( $version)]($style) '
+format = '[$symbol($version)]($style) '
 
 [python]
+symbol = " "
 style = "purple"
-format = '[python( $version)( $virtualenv)]($style) '
+format = '[$symbol($version)( $virtualenv)]($style) '
 
 [rust]
+symbol = "󱘗 "
 style = "purple"
-format = '[rust( $version)]($style) '
+format = '[$symbol($version)]($style) '
 
 [scala]
+symbol = " "
 style = "purple"
-format = '[scala( $version)]($style) '
+format = '[$symbol($version)]($style) '
