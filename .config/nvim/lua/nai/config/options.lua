@@ -125,6 +125,10 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 function _G.nai_tabline()
 	local s = ""
 	for tab = 1, vim.fn.tabpagenr("$") do
+		-- divider between tabs, %T closes the previous tab's click region
+		if tab > 1 then
+			s = s .. "%T%#NaiTabLineSep#╎"
+		end
 		local buf = vim.fn.tabpagebuflist(tab)[vim.fn.tabpagewinnr(tab)]
 		local name = vim.fn.fnamemodify(vim.fn.bufname(buf), ":t")
 		if name == "" then

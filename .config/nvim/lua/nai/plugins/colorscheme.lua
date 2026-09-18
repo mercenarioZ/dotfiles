@@ -15,6 +15,8 @@ require("everforest").setup({
 		-- incline filename badge: purple when focused, muted otherwise
 		hl.InclineNormal = { fg = palette.bg0, bg = palette.purple }
 		hl.InclineNormalNC = { fg = palette.grey1, bg = palette.bg1 }
+		-- tabline divider: dark rule on the inactive tab background
+		hl.NaiTabLineSep = { fg = palette.grey0, bg = palette.bg3 }
 		-- blink's completion menu (insert and cmdline) links to Pmenu, which
 		-- float_style = "blend" leaves opaque; clear its background to match floats
 		hl.BlinkCmpMenu = { fg = palette.fg, bg = palette.none }

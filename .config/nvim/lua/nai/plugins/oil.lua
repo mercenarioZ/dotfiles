@@ -3,7 +3,7 @@ local oil = require("oil")
 oil.setup({
 	-- open oil instead of netrw for `nvim .` and :e on a directory
 	default_file_explorer = true,
-	columns = { "icon", "permissions", "size", "mtime" },
+	columns = { "icon", "mtime" },
 	win_options = {
 		number = true,
 		relativenumber = true,

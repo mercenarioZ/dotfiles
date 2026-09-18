@@ -18,6 +18,7 @@ keymap.set("n", "<C-m>", function()
 	vim.diagnostic.jump({ count = 1, float = true })
 end, opts)
 
+-- copy diagnostic to clipboard
 keymap.set("n", "<leader>yc", function()
 	local diagnostics = vim.diagnostic.get(0, { lnum = vim.fn.line(".") - 1 })
 
@@ -59,5 +60,18 @@ keymap.set("n", "<C-u>", "<C-u>zz")
 keymap.set("v", "<", "<gv")
 keymap.set("v", ">", ">gv")
 
+-- find files
+keymap.set("n", ";f", function()
+	Snacks.picker.files()
+end, { desc = "Files" })
+
+keymap.set("n", ";r", function()
+	Snacks.picker.recent()
+end, { desc = "Recents" })
+
+keymap.set("n", ";b", function()
+	Snacks.picker.buffers()
+end, { desc = "List buffers" })
+
 -- save
-keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+-- keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })

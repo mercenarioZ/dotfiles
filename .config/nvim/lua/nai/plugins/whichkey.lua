@@ -15,7 +15,7 @@ wk.setup({
 		{
 			mode = { "n", "x" },
 			{ "<leader>c", group = "code" },
-			{ "<leader>f", group = "file/find" },
+			{ ";", group = "files/buffers" },
 			{ "<leader>g", group = "git" },
 			{ "<leader>gh", group = "hunks" },
 			{ "<leader>s", group = "search" },
