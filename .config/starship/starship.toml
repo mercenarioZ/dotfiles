@@ -55,8 +55,6 @@ vimcmd_visual_symbol = '[<](yellow)'
 symbol = ""
 style = "yellow"
 format = '[$symbol $branch]($style) '
-truncation_length = 16
-truncation_symbol = "..."
 
 [git_status]
 disabled = false

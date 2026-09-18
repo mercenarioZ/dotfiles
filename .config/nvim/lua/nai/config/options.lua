@@ -50,7 +50,7 @@ opt.fillchars = {
 	diff = "\u{2571}", -- ╱ light diagonal, for deleted diff lines
 	eob = "~",
 }
-opt.shortmess:append({ W = true, I = true, c = true, C = true })
+opt.shortmess:append({ W = false, I = false, c = true, C = false })
 
 -- splits
 opt.splitbelow = true
