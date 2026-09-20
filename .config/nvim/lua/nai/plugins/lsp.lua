@@ -12,6 +12,7 @@ vim.lsp.enable({
 	"vtsls",
 	"vue_ls",
 	"yamlls",
+	"jdtls",
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
