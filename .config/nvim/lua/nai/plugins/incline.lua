@@ -3,7 +3,7 @@ require("incline").setup({
 		margin = { vertical = 0, horizontal = 1 },
 	},
 	-- hide the badge while the cursor is on the line it covers
-	hide = { cursorline = true },
+	hide = { cursorline = true, only_win = true },
 
 	-- colours live in colorscheme.lua (InclineNormal / InclineNormalNC),
 	-- so they survive a :colorscheme reload
