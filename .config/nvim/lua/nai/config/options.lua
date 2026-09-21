@@ -4,6 +4,9 @@ vim.g.maplocalleader = "\\"
 
 local opt = vim.opt
 
+-- conceallevel
+opt.conceallevel = 0
+
 -- line numbers & cursor
 opt.number = true
 opt.relativenumber = true
@@ -43,7 +46,6 @@ opt.pumheight = 10
 opt.pumblend = 10
 opt.winborder = "rounded" -- global float borders (0.11+)
 opt.list = true
-opt.conceallevel = 2
 opt.fillchars = {
 	fold = " ",
 	foldsep = " ",
@@ -98,4 +100,3 @@ vim.diagnostic.config({
 		},
 	},
 })
-
