@@ -1,5 +1,5 @@
-background-opacity = 1
-# background-blur-radius = 28
+background-opacity = 0.9
+background-blur-radius = 20
 theme = Everforest Dark Hard
 minimum-contrast = 1
 
@@ -16,8 +16,8 @@ window-height = 40
 window-width = 110
 
 window-padding-x = 8
-window-padding-y = 8
-window-padding-y = 8,0
+window-padding-y = 4
+# window-padding-y = 8,0
 window-padding-balance = true
 
 macos-option-as-alt = left
