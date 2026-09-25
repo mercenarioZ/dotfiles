@@ -1,2 +1,2 @@
 transparent_background = true
-vcs = "jj"
+# Hunk auto-detects Git, Jujutsu, or Sapling per repository
