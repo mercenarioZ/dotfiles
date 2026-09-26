@@ -28,6 +28,11 @@ $line_break\
 $character
 """
 
+# default 500ms. The /usr/bin compiler shims take >500ms on their first exec after
+# being evicted from cache; a slow probe would otherwise print a starship WARN on
+# every prompt in a directory containing C/C++ files.
+command_timeout = 1500
+
 [username]
 disabled = false
 show_always = false
@@ -89,15 +94,21 @@ symbol = "󰏗 "
 style = "green"
 format = '[$symbol($version)( $environment)]($style) '
 
+# single pinned probe: the upstream default tries cc -> gcc -> clang, so one cold
+# exec would be paid up to three times in the same prompt.
 [c]
 symbol = " "
 style = "purple"
 format = '[$symbol($version)]($style) '
+commands = [["cc", "--version"]]
 
+# NOTE: starship disables this module by default (`disabled = true`), so this block and
+# the `$cpp` in `format` render nothing as-is. Add `disabled = false` to switch it on.
 [cpp]
 symbol = " "
 style = "purple"
 format = '[$symbol($version)]($style) '
+commands = [["c++", "--version"]]
 
 [elixir]
 symbol = " "
