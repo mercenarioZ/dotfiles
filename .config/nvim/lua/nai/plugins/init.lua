@@ -30,6 +30,7 @@ vim.pack.add({
 	{ src = gh("stevearc/conform.nvim") },
 	{ src = gh("nvim-lualine/lualine.nvim") },
 	{ src = gh("stevearc/oil.nvim") },
+	{ src = gh("mercenarioZ/voil.nvim") },
 	{ src = gh("lewis6991/gitsigns.nvim") },
 	{ src = gh("nvim-mini/mini.pairs") },
 	{ src = gh("folke/todo-comments.nvim") },

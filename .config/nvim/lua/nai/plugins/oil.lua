@@ -3,7 +3,8 @@ local oil = require("oil")
 oil.setup({
 	-- open oil instead of netrw for `nvim .` and :e on a directory
 	default_file_explorer = true,
-	columns = { "icon", "vcs", "mtime" },
+	-- "voil" is registered by mercenarioZ/voil.nvim, see plugins/init.lua
+	columns = { "icon", "voil", "mtime" },
 	win_options = {
 		number = true,
 		relativenumber = true,
@@ -27,9 +28,6 @@ oil.setup({
 		["q"] = { "actions.close", mode = "n" },
 	},
 })
-
--- registers the "vcs" column used above: git/jj status per entry
-require("nai.oil.vcs").setup()
 
 local map = vim.keymap.set
 
