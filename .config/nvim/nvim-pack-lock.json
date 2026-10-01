@@ -79,7 +79,7 @@
       "src": "https://github.com/folke/todo-comments.nvim"
     },
     "voil.nvim": {
-      "rev": "afeabd51f13c5a6b11fa84c104577ff71732ece3",
+      "rev": "8c6d643284d8aa7030b0cacf8d9f4cb97dd99c59",
       "src": "https://github.com/mercenarioZ/voil.nvim"
     },
     "which-key.nvim": {
