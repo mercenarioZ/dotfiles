@@ -12,6 +12,9 @@ require("everforest").setup({
 		hl.SnacksPickerPreviewTitle = { fg = palette.bg0, bg = palette.green }
 		hl.SnacksPickerToggle = { fg = palette.bg0, bg = palette.red, bold = true, italic = true }
 		hl.GitSignsCurrentLineBlame = { fg = palette.grey0, italic = true }
+		-- squiggle under unused code, but keep its syntax colours
+		hl.DiagnosticUnderlineHint = { undercurl = true, sp = palette.purple }
+		hl.DiagnosticUnnecessary = {}
 		-- incline filename badge: purple when focused, muted otherwise
 		hl.InclineNormal = { fg = palette.bg0, bg = palette.purple }
 		hl.InclineNormalNC = { fg = palette.grey1, bg = palette.bg1 }
