@@ -3,8 +3,9 @@ local oil = require("oil")
 oil.setup({
 	-- open oil instead of netrw for `nvim .` and :e on a directory
 	default_file_explorer = true,
-	-- "voil" is registered by mercenarioZ/voil.nvim, see plugins/init.lua
-	columns = { "icon", "voil", "mtime" },
+	-- "vcs" is registered by mercenarioZ/oh-my-oil.nvim, see plugins/init.lua
+	columns = { "icon", "vcs", "mtime" },
+	vcs = { highlight_filename = true },
 	win_options = {
 		number = true,
 		relativenumber = true,
@@ -35,4 +36,4 @@ map("n", "sf", function()
 	oil.open_float(nil, { preview = {} })
 end, { desc = "Explorer oil (file dir)" })
 
-map("n", "-", "<cmd>Oil --float<cr>", { desc = "Open parent directory" })
+map("n", "-", "<cmd>OhMyOil --float<cr>", { desc = "Open oh my oil" })
