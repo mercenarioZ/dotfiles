@@ -67,8 +67,8 @@
       "src": "https://github.com/windwp/nvim-ts-autotag"
     },
     "oh-my-oil.nvim": {
-      "rev": "6a5e4ec57fed12a4054d07c3303727bf21b1d45d",
-      "src": "/Users/macbookpro/code/oh-my-oil.nvim"
+      "rev": "a213f7389908b5236a9ec068cb3ee39e63280201",
+      "src": "https://github.com/mercenarioZ/oh-my-oil.nvim"
     },
     "oil.nvim": {
       "rev": "b73018b75affd13fa38e2fc94ef753b465f770d7",
