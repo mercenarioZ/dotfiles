@@ -17,6 +17,7 @@ wk.setup({
 			{ "<leader>c", group = "code" },
 			{ ";", group = "files/buffers" },
 			{ "<leader>g", group = "git" },
+			{ "<leader>o", group = "octo" },
 			{ "<leader>gh", group = "hunks" },
 			{ "<leader>s", group = "search" },
 			{ "<leader>u", group = "ui" },

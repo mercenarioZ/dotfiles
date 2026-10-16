@@ -141,6 +141,11 @@ Requirements:
 - [fd](https://github.com/sharkdp/fd) for file finding (optional, falls back
   to ripgrep)
 
+Octo.nvim is configured with the Snacks picker for GitHub issues, pull requests,
+discussions, notifications, and search. Authenticate the GitHub CLI with
+`gh auth login`, then use `<leader>oi`, `<leader>op`, `<leader>od`, `<leader>on`,
+or `<leader>os`. Run `:checkhealth octo` to verify the setup.
+
 Enabled language servers: astro, clangd, cssls, gopls, html, lua_ls, marksman,
 tailwindcss, vtsls, vue_ls, yamlls. Per-server settings live in
 `.config/nvim/after/lsp/`.

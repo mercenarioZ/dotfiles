@@ -19,6 +19,8 @@ vim.api.nvim_create_autocmd("PackChanged", {
 vim.pack.add({
 	{ src = gh("neanias/everforest-nvim") },
 	{ src = gh("nvim-mini/mini.icons") },
+	{ src = gh("nvim-lua/plenary.nvim") },
+	{ src = gh("pwntester/octo.nvim") },
 	{ src = gh("folke/snacks.nvim") },
 	{ src = gh("mason-org/mason.nvim") },
 	{ src = gh("neovim/nvim-lspconfig") },
@@ -58,3 +60,4 @@ require("nai.plugins.incline")
 require("nai.plugins.colors")
 require("nai.plugins.whichkey")
 require("nai.plugins.noice")
+require("nai.plugins.octo")

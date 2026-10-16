@@ -66,6 +66,10 @@
       "rev": "88c1453db4ba7dd24131086fe51fdf74e587d275",
       "src": "https://github.com/windwp/nvim-ts-autotag"
     },
+    "octo.nvim": {
+      "rev": "8461d99d13cca243f89848bf4d9fadee096f0a48",
+      "src": "https://github.com/pwntester/octo.nvim"
+    },
     "oh-my-oil.nvim": {
       "rev": "a213f7389908b5236a9ec068cb3ee39e63280201",
       "src": "https://github.com/mercenarioZ/oh-my-oil.nvim"
@@ -73,6 +77,10 @@
     "oil.nvim": {
       "rev": "b73018b75affd13fa38e2fc94ef753b465f770d7",
       "src": "https://github.com/stevearc/oil.nvim"
+    },
+    "plenary.nvim": {
+      "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
+      "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "snacks.nvim": {
       "rev": "882c996cf28183f4d63640de0b4c02ec886d01f2",
