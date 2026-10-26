@@ -10,12 +10,12 @@ hhmm=${rest%% *}
 clock=${rest#* }
 
 case "$dow" in
-  1|2|3|4|5)
-    if [ ! "$hhmm" \< "0830" ] && [ "$hhmm" \< "1800" ]; then
-      printf '#[fg=#272e33,bg=#ffde42,bold] [working hours] %s #[default]' "$clock"
-      exit 0
-    fi
-    ;;
+1 | 2 | 3 | 4 | 5)
+  if [ ! "$hhmm" \< "0830" ] && [ "$hhmm" \< "1800" ]; then
+    printf '#[fg=#272e33,bg=#ffde42] here we go again - %s #[default]' "$clock"
+    exit 0
+  fi
+  ;;
 esac
 
 printf '#[fg=#859289,bg=#374145] free, btw %s #[default]' "$clock"
