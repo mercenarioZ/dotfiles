@@ -7,22 +7,20 @@ files are called out below; do not link every directory on every operating syste
 
 ## Platform support
 
-| Component             | Path                                 | macOS | Linux |  Windows  | Notes                                                                                                    |
-| --------------------- | ------------------------------------ | :---: | :---: | :-------: | -------------------------------------------------------------------------------------------------------- |
-| Neovim                | `.config/nvim`                       |  Yes  |  Yes  |    Yes    | Plain `vim.pack` config; Windows uses the mappings in `for_windows/` (outdated).                         |
-| Git                   | `.gitconfig`                         |  Yes  |  Yes  |    Yes    | Shared aliases and color settings.                                                                       |
-| Zsh                   | `.zshrc`                             |  Yes  |  Yes  |    No     | Detects Homebrew/Linuxbrew and loads optional tools only when available.                                 |
-| Starship              | `.config/starship`                   |  Yes  |  Yes  | Not wired | Used by the shared Zsh config.                                                                           |
-| Fastfetch             | `.config/fastfetch`                  |  Yes  |  Yes  | Not wired | Shared Unix setup in this repository.                                                                    |
-| tmux                  | `.config/tmux`                       |  Yes  |  Yes  |    No     | Automatically loads `macos.conf` or `linux.conf`. Linux clipboard support assumes Wayland and `wl-copy`. |
-| Ghostty               | `.config/ghostty`                    |  Yes  |  Yes  |    No     | Uses a different config file on each platform.                                                           |
-| LazyGit               | `.config/lazygit/config.yml`         |  Yes  |  Yes  | Not wired | Dark selection background keeps colored text readable.                                                   |
-| Hyprland + Quickshell | `.config/hypr`, `.config/quickshell` |  No   |  Yes  |    No     | **Linux/Wayland only.**                                                                                  |
-| Hunk + Jujutsu        | `.config/hunk`, `.config/jj`         |  Yes  |  Yes  | Not wired | Shared CLI configuration; generated state stays local.                                                   |
-| PowerShell            | `.config/powershell`                 |  No   |  No   |    Yes    | **Windows-only setup in this repository.**                                                               |
+| Component             | Path                                 | macOS | Linux | Windows | Notes                                 |
+| --------------------- | ------------------------------------ | :---: | :---: | :-----: | ------------------------------------- |
+| Neovim                | `.config/nvim`                       |   ✓   |   ✓   |    ✓    | Windows via `for_windows/` (outdated) |
+| Git                   | `.gitconfig`                         |   ✓   |   ✓   |    ✓    |                                       |
+| Zsh + Starship        | `.zshrc`, `.config/starship`         |   ✓   |   ✓   |         |                                       |
+| Fastfetch             | `.config/fastfetch`                  |   ✓   |   ✓   |         |                                       |
+| tmux                  | `.config/tmux`                       |   ✓   |   ✓   |         | Linux clipboard needs `wl-copy`       |
+| Ghostty               | `.config/ghostty`                    |   ✓   |   ✓   |         | One file per platform                 |
+| LazyGit               | `.config/lazygit`                    |   ✓   |   ✓   |         |                                       |
+| Hunk + Jujutsu        | `.config/hunk`, `.config/jj`         |   ✓   |   ✓   |         |                                       |
+| Hyprland + Quickshell | `.config/hypr`, `.config/quickshell` |       |   ✓   |         | Wayland                               |
+| PowerShell            | `.config/powershell`                 |       |       |    ✓    |                                       |
 
-`Not wired` means the application may support that operating system, but this
-repository does not currently provide installation or symlink instructions for it.
+Blank means not set up in this repository.
 
 ## Safe symlink setup (macOS and Linux)
 
