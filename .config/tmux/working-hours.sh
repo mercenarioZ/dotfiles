@@ -18,4 +18,4 @@ case "$dow" in
   ;;
 esac
 
-printf '#[fg=#859289,bg=#374145] relaxin~ %s #[default]' "$clock"
+printf '#[fg=#859289] caffeinate %s #[default]' "$clock"
