@@ -21,6 +21,7 @@ $golang\
 $java\
 $nodejs\
 $python\
+$zig\
 $conda\
 $docker_context\
 $pixi\
@@ -180,5 +181,12 @@ format = '[$symbol($version)]($style) '
 
 [scala]
 symbol = " "
+style = "purple"
+format = '[$symbol($version)]($style) '
+
+# U+E6A9 = nf-dev-zig: kept as a TOML escape so the private-use glyph survives
+# editors/writers that drop non-BMP-adjacent PUA characters.
+[zig]
+symbol = "\uE6A9 "
 style = "purple"
 format = '[$symbol($version)]($style) '
