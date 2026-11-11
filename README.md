@@ -9,9 +9,9 @@ files are called out below; do not link every directory on every operating syste
 
 | Component             | Path                                 | macOS | Linux | Windows | Notes                                 |
 | --------------------- | ------------------------------------ | :---: | :---: | :-----: | ------------------------------------- |
-| Neovim                | `.config/nvim`                       |   ✓   |   ✓   |    ✓    | Windows via `for_windows/` (outdated) |
+| Neovim                | `dot_config/nvim`                    |   ✓   |   ✓   |    ✓    | Windows via `for_windows/` (outdated) |
 | Git                   | `.gitconfig`                         |   ✓   |   ✓   |    ✓    |                                       |
-| Zsh + Starship        | `.zshrc`, `.config/starship`         |   ✓   |   ✓   |         |                                       |
+| Zsh + Starship        | `.zshrc`, `dot_config/starship`      |   ✓   |   ✓   |         | Starship via chezmoi                  |
 | Fastfetch             | `.config/fastfetch`                  |   ✓   |   ✓   |         |                                       |
 | tmux                  | `.config/tmux`                       |   ✓   |   ✓   |         | Linux clipboard needs `wl-copy`       |
 | Ghostty               | `.config/ghostty`                    |   ✓   |   ✓   |         | One file per platform                 |
@@ -21,6 +21,24 @@ files are called out below; do not link every directory on every operating syste
 | PowerShell            | `.config/powershell`                 |       |       |    ✓    |                                       |
 
 Blank means not set up in this repository.
+
+## chezmoi setup
+
+Files under `dot_config/` are managed by [chezmoi](https://www.chezmoi.io/) and
+copied into `$HOME`. Point chezmoi at this clone in `~/.config/chezmoi/chezmoi.toml`:
+
+```toml
+sourceDir = "/path/to/dotfiles"
+```
+
+Then preview and apply:
+
+```sh
+chezmoi diff
+chezmoi apply
+```
+
+Non-config files at the repository root must be listed in `.chezmoiignore`.
 
 ## Safe symlink setup (macOS and Linux)
 
@@ -52,9 +70,7 @@ link_config() {
 mkdir -p "$HOME/.config"
 
 link_config "$DOTFILES/.zshrc" "$HOME/.zshrc"
-link_config "$DOTFILES/.config/nvim" "$HOME/.config/nvim"
 link_config "$DOTFILES/.config/fastfetch" "$HOME/.config/fastfetch"
-link_config "$DOTFILES/.config/starship" "$HOME/.config/starship"
 link_config "$DOTFILES/.config/tmux" "$HOME/.config/tmux"
 
 mkdir -p "$HOME/.config/hunk" "$HOME/.config/jj"
@@ -146,7 +162,7 @@ or `<leader>os`. Run `:checkhealth octo` to verify the setup.
 
 Enabled language servers: astro, clangd, cssls, gopls, html, lua_ls, marksman,
 tailwindcss, vtsls, vue_ls, yamlls. Per-server settings live in
-`.config/nvim/after/lsp/`.
+`dot_config/nvim/after/lsp/`.
 
 Language servers and tools managed by Mason may have their own runtime
 requirements. For example, the Vue, Astro, and TypeScript servers need Node.js
