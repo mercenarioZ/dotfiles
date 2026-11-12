@@ -9,9 +9,6 @@ dot_config/nvim/*.toml
 dot_config/nvim/LICENSE
 *.log
 
-# Jujutsu repository-local configuration and metadata
-.config/jj/repos/
-
 # GitHub Copilot generated state
 .config/github-copilot/
 

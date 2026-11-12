@@ -6,6 +6,9 @@ README.md
 
 .config/hunk/state.json
 
+.config/jj/repos
+.config/jj/repos/**
+
 # powershell: for windows only
 {{- if ne .chezmoi.os "windows" }}
 .config/powershell
