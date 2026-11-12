@@ -90,8 +90,7 @@ Then load the profile from `$PROFILE`:
 - [gh](https://cli.github.com/) for Octo.nvim (`gh auth login`, then `:checkhealth octo`)
 - Node.js for the Vue, Astro, and TypeScript language servers
 
-Per-server LSP settings live in `dot_config/nvim/after/lsp/`. The previous LazyVim
-config is in `.config/nvim-lazyvim`; run it with `NVIM_APPNAME=nvim-lazyvim nvim`.
+Per-server LSP settings live in `dot_config/nvim/after/lsp/`.
 
 ## Shell setup (macOS, Linux)
 
