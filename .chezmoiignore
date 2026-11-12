@@ -14,3 +14,11 @@ README.md
 .config/powershell
 .config/powershell/**
 {{- end }}
+
+# for ghostty, i'm using rex now, btw
+{{- if ne .chezmoi.os "darwin" }}
+.config/ghostty/macos.conf
+{{- end }}
+{{- if ne .chezmoi.os "linux" }}
+.config/ghostty/linux.conf
+{{- end }}

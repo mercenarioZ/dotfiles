@@ -44,17 +44,8 @@ link such as `tmux/tmux`.
 
 ```sh
 DOTFILES="$HOME/dotfiles"
-mkdir -p ~/.config/hunk ~/.config/jj ~/.config/ghostty
 
-ln -s "$DOTFILES/.zshrc" ~/.zshrc
-ln -s "$DOTFILES/.config/fastfetch" ~/.config/fastfetch
-ln -s "$DOTFILES/.config/tmux" ~/.config/tmux
-ln -s "$DOTFILES/.config/hunk/config.toml" ~/.config/hunk/config.toml
-ln -s "$DOTFILES/.config/jj/config.toml" ~/.config/jj/config.toml
 ln -s "$DOTFILES/.config/lazygit/config.yml" "$(lazygit --print-config-dir)/config.yml"
-
-# Ghostty: macOS uses `config`, Linux uses `linux.conf`
-ln -s "$DOTFILES/.config/ghostty/config" ~/.config/ghostty/config
 
 # Linux/Wayland only
 ln -s "$DOTFILES/.config/hypr" ~/.config/hypr
