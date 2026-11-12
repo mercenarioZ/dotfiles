@@ -9,7 +9,7 @@ files are called out below; do not link every directory on every operating syste
 
 | Component             | Path                                 | macOS | Linux | Windows | Notes                                 |
 | --------------------- | ------------------------------------ | :---: | :---: | :-----: | ------------------------------------- |
-| Neovim                | `dot_config/nvim`                    |   ✓   |   ✓   |    ✓    | Windows via `for_windows/` (outdated) |
+| Neovim                | `dot_config/nvim`                    |   ✓   |   ✓   |    ✓    | Windows needs `XDG_CONFIG_HOME`       |
 | Git                   | `.gitconfig`                         |   ✓   |   ✓   |    ✓    |                                       |
 | Zsh + Starship        | `.zshrc`, `dot_config/starship`      |   ✓   |   ✓   |         | Starship via chezmoi                  |
 | Fastfetch             | `.config/fastfetch`                  |   ✓   |   ✓   |         |                                       |
@@ -18,7 +18,7 @@ files are called out below; do not link every directory on every operating syste
 | LazyGit               | `.config/lazygit`                    |   ✓   |   ✓   |         |                                       |
 | Hunk + Jujutsu        | `.config/hunk`, `.config/jj`         |   ✓   |   ✓   |         |                                       |
 | Hyprland + Quickshell | `.config/hypr`, `.config/quickshell` |       |   ✓   |         | Wayland                               |
-| PowerShell            | `.config/powershell`                 |       |       |    ✓    |                                       |
+| PowerShell            | `dot_config/powershell`              |       |       |    ✓    |                                       |
 
 Blank means not set up in this repository.
 
@@ -118,9 +118,20 @@ link_config "$DOTFILES/.config/quickshell" "$HOME/.config/quickshell"
 
 ### Windows only
 
-Windows symlink mappings are listed in `for_windows/symlinks-windows.json`. They
-cover Neovim, Git, and PowerShell. Windows Developer Mode or an elevated shell may
-be required to create symbolic links.
+Neovim and PowerShell are applied by chezmoi; `.config/powershell` is ignored on
+other platforms. Point Neovim at `~/.config` once, then apply:
+
+```powershell
+winget install twpayne.chezmoi
+[Environment]::SetEnvironmentVariable("XDG_CONFIG_HOME", "$HOME\.config", "User")
+chezmoi apply
+```
+
+Load the profile from `$PROFILE`:
+
+```powershell
+. "$HOME\.config\powershell\user_profile.ps1"
+```
 
 ## Quiet desktop (Linux/Wayland only)
 

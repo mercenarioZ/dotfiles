@@ -1,4 +1,8 @@
 README.md
-for_windows
-for_windows/**
 *.log
+
+# powershell: for windows only
+{{- if ne .chezmoi.os "windows" }}
+.config/powershell
+.config/powershell/**
+{{- end }}
