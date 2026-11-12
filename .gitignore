@@ -9,9 +9,6 @@ dot_config/nvim/*.toml
 dot_config/nvim/LICENSE
 *.log
 
-# Tmux
-.config/tmux/plugins/
-
 # Jujutsu repository-local configuration and metadata
 .config/jj/repos/
 

@@ -1,6 +1,8 @@
 README.md
 *.log
 
+.config/tmux/plugins
+.config/tmux/plugins/**
 # powershell: for windows only
 {{- if ne .chezmoi.os "windows" }}
 .config/powershell
