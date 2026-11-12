@@ -1,0 +1,7 @@
+[tools]
+node = "24.22.1"
+"npm:eas-cli" = "latest"
+zig = "0.17.0"
+
+[settings]
+idiomatic_version_file_enable_tools = ["node"]
