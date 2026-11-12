@@ -1,37 +1,33 @@
 ## MercenarioZ's dotfiles
 
-Personal configuration shared across macOS, Linux, and Windows. Platform-specific
-files are called out below; do not link every directory on every operating system.
+Personal configuration for macOS, Linux, and Windows. Use at your own risk.
 
 @craftzdog inspired me a lot, thank u so much!
 
-## Platform support
+## Contents
 
-| Component             | Path                                 | macOS | Linux | Windows | Notes                                 |
-| --------------------- | ------------------------------------ | :---: | :---: | :-----: | ------------------------------------- |
-| Neovim                | `dot_config/nvim`                    |   ✓   |   ✓   |    ✓    | Windows needs `XDG_CONFIG_HOME`       |
-| Git                   | `dot_gitconfig.tmpl`                 |   ✓   |   ✓   |    ✓    |                                       |
-| Zsh + Starship        | `.zshrc`, `dot_config/starship`      |   ✓   |   ✓   |         | Starship via chezmoi                  |
-| Fastfetch             | `.config/fastfetch`                  |   ✓   |   ✓   |         |                                       |
-| tmux                  | `.config/tmux`                       |   ✓   |   ✓   |         | Linux clipboard needs `wl-copy`       |
-| Ghostty               | `.config/ghostty`                    |   ✓   |   ✓   |         | One file per platform                 |
-| LazyGit               | `.config/lazygit`                    |   ✓   |   ✓   |         |                                       |
-| Hunk + Jujutsu        | `.config/hunk`, `.config/jj`         |   ✓   |   ✓   |         |                                       |
-| Hyprland + Quickshell | `.config/hypr`, `.config/quickshell` |       |   ✓   |         | Wayland                               |
-| PowerShell            | `dot_config/powershell`              |       |       |    ✓    |                                       |
+Partly managed with [chezmoi](https://www.chezmoi.io/) (`dot_*` files); the rest is
+still symlinked from `.config/`.
 
-Blank means not set up in this repository.
+- Neovim config
+- Git config
+- Zsh, Starship, and Fastfetch config (macOS, Linux)
+- tmux, Ghostty, LazyGit, Hunk, and Jujutsu config (macOS, Linux)
+- Rex and mise config
+- Hyprland and Quickshell desktop (Linux/Wayland)
+- PowerShell config (Windows)
 
-## chezmoi setup
+## Setup
 
-Files prefixed with `dot_` are managed by [chezmoi](https://www.chezmoi.io/) and
-copied into `$HOME`. Point chezmoi at this clone in `~/.config/chezmoi/chezmoi.toml`:
+### chezmoi
+
+Point chezmoi at this clone in `~/.config/chezmoi/chezmoi.toml`:
 
 ```toml
 sourceDir = "/path/to/dotfiles"
 ```
 
-Then enter the Git name and email once (`--prompt` asks again), preview, and apply:
+Enter the Git name and email once (`--prompt` asks again), preview, and apply:
 
 ```sh
 chezmoi init
@@ -41,86 +37,34 @@ chezmoi apply
 
 Non-config files at the repository root must be listed in `.chezmoiignore`.
 
-## Safe symlink setup (macOS and Linux)
+### Symlinks (macOS, Linux)
 
-Keep `~/.config` as a real directory so credentials, plugins, caches, and generated
-state remain machine-local.
-
-> [!IMPORTANT]
-> The destination must not already exist. Running `ln -s SOURCE EXISTING_DIRECTORY`
-> creates a nested link such as `fastfetch/fastfetch` or `tmux/tmux` instead of
-> replacing the directory.
-
-Set `DOTFILES` to the actual clone location, then use this guarded helper:
+The target must not exist yet; linking onto an existing directory creates a nested
+link such as `tmux/tmux`.
 
 ```sh
-DOTFILES="$HOME/code/dotfiles" # change this if the repository is cloned elsewhere
+DOTFILES="$HOME/dotfiles"
+mkdir -p ~/.config/hunk ~/.config/jj ~/.config/ghostty
 
-link_config() {
-  source_path="$1"
-  target_path="$2"
+ln -s "$DOTFILES/.zshrc" ~/.zshrc
+ln -s "$DOTFILES/.config/fastfetch" ~/.config/fastfetch
+ln -s "$DOTFILES/.config/tmux" ~/.config/tmux
+ln -s "$DOTFILES/.config/hunk/config.toml" ~/.config/hunk/config.toml
+ln -s "$DOTFILES/.config/jj/config.toml" ~/.config/jj/config.toml
+ln -s "$DOTFILES/.config/lazygit/config.yml" "$(lazygit --print-config-dir)/config.yml"
 
-  if [ -e "$target_path" ] || [ -L "$target_path" ]; then
-    printf 'Not linking: %s already exists\n' "$target_path" >&2
-    return 1
-  fi
+# Ghostty: macOS uses `config`, Linux uses `linux.conf`
+ln -s "$DOTFILES/.config/ghostty/config" ~/.config/ghostty/config
 
-  ln -s "$source_path" "$target_path"
-}
-
-mkdir -p "$HOME/.config"
-
-link_config "$DOTFILES/.zshrc" "$HOME/.zshrc"
-link_config "$DOTFILES/.config/fastfetch" "$HOME/.config/fastfetch"
-link_config "$DOTFILES/.config/tmux" "$HOME/.config/tmux"
-
-mkdir -p "$HOME/.config/hunk" "$HOME/.config/jj"
-link_config "$DOTFILES/.config/hunk/config.toml" "$HOME/.config/hunk/config.toml"
-link_config "$DOTFILES/.config/jj/config.toml" "$HOME/.config/jj/config.toml"
+# Linux/Wayland only
+ln -s "$DOTFILES/.config/hypr" ~/.config/hypr
+ln -s "$DOTFILES/.config/quickshell" ~/.config/quickshell
 ```
 
-The shared Zsh config optionally loads `~/.zshrc.local` for device-specific paths
-(for example Java or Flutter) and `~/.zsh-secrets` for credentials. Both files are
-ignored by Git.
+Zsh optionally loads `~/.zshrc.local` (device-specific paths) and `~/.zsh-secrets`
+(credentials). Both are ignored by Git.
 
-### Ghostty (macOS or Linux)
-
-Ghostty needs a platform-specific file linked as `~/.config/ghostty/config`:
-
-```sh
-mkdir -p "$HOME/.config/ghostty"
-
-# macOS only
-link_config "$DOTFILES/.config/ghostty/config" "$HOME/.config/ghostty/config"
-
-# Linux only: use this instead of the macOS line
-link_config "$DOTFILES/.config/ghostty/linux.conf" "$HOME/.config/ghostty/config"
-```
-
-The macOS file contains `macos-option-as-alt`; the Linux file contains GTK,
-quick-terminal, and Linux desktop integration settings.
-
-### LazyGit (macOS or Linux)
-
-```sh
-LAZYGIT_CONFIG_DIR="$(lazygit --print-config-dir)"
-mkdir -p "$LAZYGIT_CONFIG_DIR"
-link_config "$DOTFILES/.config/lazygit/config.yml" "$LAZYGIT_CONFIG_DIR/config.yml"
-```
-
-### Linux/Wayland desktop only
-
-Hyprland and the `quiet` Quickshell desktop are not used on macOS or Windows:
-
-```sh
-link_config "$DOTFILES/.config/hypr" "$HOME/.config/hypr"
-link_config "$DOTFILES/.config/quickshell" "$HOME/.config/quickshell"
-```
-
-### Windows only
-
-Neovim and PowerShell are applied by chezmoi; `.config/powershell` is ignored on
-other platforms. Point Neovim at `~/.config` once, then apply:
+### Windows
 
 ```powershell
 winget install twpayne.chezmoi
@@ -128,80 +72,56 @@ winget install twpayne.chezmoi
 chezmoi apply
 ```
 
-Load the profile from `$PROFILE`:
+Then load the profile from `$PROFILE`:
 
 ```powershell
 . "$HOME\.config\powershell\user_profile.ps1"
 ```
 
-## Quiet desktop (Linux/Wayland only)
+## Neovim setup
 
-The desktop requires Hyprland 0.56+ and uses Hyprland's native Lua configuration
-from `.config/hypr/hyprland.lua`, together with the named Quickshell config at
-`.config/quickshell/quiet/`. Hyprlock, Hypridle, Hyprpaper, and Hyprsunset remain
-separate programs with their own `.conf` files in `.config/hypr/`.
+- Neovim >= **0.12** (plugins are managed with the built-in `vim.pack`)
+- Git
+- [tree-sitter CLI](https://github.com/tree-sitter/tree-sitter) 0.26.1+ and a **C**
+  compiler for `nvim-treesitter`
+- A [Nerd Font](https://www.nerdfonts.com/) v3+
+- [ripgrep](https://github.com/BurntSushi/ripgrep) for live grep,
+  [fd](https://github.com/sharkdp/fd) for finding files (optional)
+- [gh](https://cli.github.com/) for Octo.nvim (`gh auth login`, then `:checkhealth octo`)
+- Node.js for the Vue, Astro, and TypeScript language servers
 
-Runtime helpers: `quickshell`, `hyprpaper`, `hypridle`, `hyprlock`, `hyprsunset`,
-`brightnessctl`, `playerctl`, `fcitx5`, `fcitx5-unikey`, `grim`, `slurp`, `swappy`,
-`wl-copy`, and `xdg-open`.
+Per-server LSP settings live in `dot_config/nvim/after/lsp/`. The previous LazyVim
+config is in `.config/nvim-lazyvim`; run it with `NVIM_APPNAME=nvim-lazyvim nvim`.
 
-The `EN`/`VI` menu-bar control mirrors Fcitx state: left-click it to toggle the
-input method, or right-click it to open Fcitx configuration.
+## Shell setup (macOS, Linux)
 
-Open the control drawer with `Super + O`, then choose **Wallpaper** to browse
-images from `~/Pictures/wallpapers`. The selection is stored locally at
-`~/.local/state/quiet/wallpaper`, so changing it does not modify the repository.
-The volume section also includes a native PipeWire output selector for connected
-speakers, headphones, HDMI, and Bluetooth audio devices.
+Integrations activate only when installed:
 
-## Neovim setup (macOS, Linux, and Windows)
-
-Requirements:
-
-- Neovim >= **0.12**, for the built-in `vim.pack` plugin manager
-- Git, used by `vim.pack` to install plugins
-- [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md)
-  0.26.1+ and a C compiler, for `nvim-treesitter` to build parsers
-- A [Nerd Font](https://www.nerdfonts.com/) v3+ for icons
-- [ripgrep](https://github.com/BurntSushi/ripgrep) for live grep
-- [fd](https://github.com/sharkdp/fd) for file finding (optional, falls back
-  to ripgrep)
-
-Octo.nvim is configured with the Snacks picker for GitHub issues, pull requests,
-discussions, notifications, and search. Authenticate the GitHub CLI with
-`gh auth login`, then use `<leader>oi`, `<leader>op`, `<leader>od`, `<leader>on`,
-or `<leader>os`. Run `:checkhealth octo` to verify the setup.
-
-Enabled language servers: astro, clangd, cssls, gopls, html, lua_ls, marksman,
-tailwindcss, vtsls, vue_ls, yamlls. Per-server settings live in
-`dot_config/nvim/after/lsp/`.
-
-Language servers and tools managed by Mason may have their own runtime
-requirements. For example, the Vue, Astro, and TypeScript servers need Node.js
-even when Mason has successfully downloaded them.
-
-The previous LazyVim config is kept in `.config/nvim-lazyvim`. Link it to
-`~/.config/nvim-lazyvim` and run it with `NVIM_APPNAME=nvim-lazyvim nvim`.
-
-## Zsh setup (macOS and Linux)
-
-Zsh is the shell configured by this repository. Most integrations are optional
-and activate only when their command or startup file is available:
-
-- [Starship](https://starship.rs/) for the prompt
-- [fzf](https://github.com/junegunn/fzf) for interactive filtering
-- [zoxide](https://github.com/ajeetdsouza/zoxide) for directory navigation
-- [eza](https://github.com/eza-community/eza) as the preferred `ls` replacement
+- [Starship](https://starship.rs/) - prompt
+- [fzf](https://github.com/junegunn/fzf) - interactive filtering
+- [zoxide](https://github.com/ajeetdsouza/zoxide) - directory jumping
+- [eza](https://github.com/eza-community/eza) - `ls` replacement
 - `zsh-autosuggestions` and `zsh-syntax-highlighting`
-- `pyenv`, `nvm`, Bun, and Homebrew/Linuxbrew when installed
+- `pyenv`, `nvm`, Bun, and Homebrew/Linuxbrew
 
-## PowerShell setup (Windows only)
+## Quiet desktop (Linux/Wayland)
+
+- Hyprland 0.56+ with Lua config in `.config/hypr/hyprland.lua`
+- Quickshell config in `.config/quickshell/quiet/`
+- Helpers: `hyprpaper`, `hypridle`, `hyprlock`, `hyprsunset`, `brightnessctl`,
+  `playerctl`, `fcitx5`, `fcitx5-unikey`, `grim`, `slurp`, `swappy`, `wl-copy`,
+  `xdg-open`
+
+`Super + O` opens the control drawer (wallpaper, audio output). The `EN`/`VI`
+indicator toggles Fcitx on left-click and opens its settings on right-click.
+
+## PowerShell setup (Windows)
 
 - [Scoop](https://scoop.sh/) - command-line installer
 - [Git for Windows](https://gitforwindows.org/)
 - [Oh My Posh](https://ohmyposh.dev/) - prompt theme engine
 - [Terminal Icons](https://github.com/devblackops/Terminal-Icons) - file icons
-- [PSReadLine](https://learn.microsoft.com/powershell/module/psreadline/) - command-line editing and completion
+- [PSReadLine](https://learn.microsoft.com/powershell/module/psreadline/) - editing and completion
 - [z](https://www.powershellgallery.com/packages/z) - directory jumper
 - [PSFzf](https://github.com/kelleyma49/PSFzf) - fuzzy finder
 
