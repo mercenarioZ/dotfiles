@@ -1,0 +1,42 @@
+[user]
+  name = {{ .name | quote }}
+  email = {{ .email | quote }}
+
+[color]
+  status = auto
+  diff = auto
+  branch = auto
+
+[alias]
+  d = diff
+  co = checkout
+  ci = commit
+  ca = commit -a
+  br = branch
+  ba = branch -a
+  st = status
+  fo = fetch origin
+  swm = switch main
+{{- if lookPath "git-lfs" }}
+
+[filter "lfs"]
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+{{- end }}
+
+[core]
+  autocrlf = {{ if eq .chezmoi.os "windows" }}true{{ else }}input{{ end }}
+{{- if lookPath "gh" }}
+
+[credential "https://github.com"]
+  helper =
+  helper = !gh auth git-credential
+[credential "https://gist.github.com"]
+  helper =
+  helper = !gh auth git-credential
+{{- end }}
+
+[include]
+  path = ~/.gitconfig.local

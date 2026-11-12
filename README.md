@@ -10,7 +10,7 @@ files are called out below; do not link every directory on every operating syste
 | Component             | Path                                 | macOS | Linux | Windows | Notes                                 |
 | --------------------- | ------------------------------------ | :---: | :---: | :-----: | ------------------------------------- |
 | Neovim                | `dot_config/nvim`                    |   ✓   |   ✓   |    ✓    | Windows needs `XDG_CONFIG_HOME`       |
-| Git                   | `.gitconfig`                         |   ✓   |   ✓   |    ✓    |                                       |
+| Git                   | `dot_gitconfig.tmpl`                 |   ✓   |   ✓   |    ✓    |                                       |
 | Zsh + Starship        | `.zshrc`, `dot_config/starship`      |   ✓   |   ✓   |         | Starship via chezmoi                  |
 | Fastfetch             | `.config/fastfetch`                  |   ✓   |   ✓   |         |                                       |
 | tmux                  | `.config/tmux`                       |   ✓   |   ✓   |         | Linux clipboard needs `wl-copy`       |
@@ -24,16 +24,17 @@ Blank means not set up in this repository.
 
 ## chezmoi setup
 
-Files under `dot_config/` are managed by [chezmoi](https://www.chezmoi.io/) and
+Files prefixed with `dot_` are managed by [chezmoi](https://www.chezmoi.io/) and
 copied into `$HOME`. Point chezmoi at this clone in `~/.config/chezmoi/chezmoi.toml`:
 
 ```toml
 sourceDir = "/path/to/dotfiles"
 ```
 
-Then preview and apply:
+Then enter the Git name and email once (`--prompt` asks again), preview, and apply:
 
 ```sh
+chezmoi init
 chezmoi diff
 chezmoi apply
 ```
