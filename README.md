@@ -37,23 +37,21 @@ chezmoi apply
 
 Non-config files at the repository root must be listed in `.chezmoiignore`.
 
-### Symlinks (macOS, Linux)
+Zsh sets `XDG_CONFIG_HOME=~/.config`, so macOS tools such as LazyGit read from
+`~/.config` too. It optionally loads `~/.zshrc.local` (device-specific paths) and
+`~/.zsh-secrets` (credentials); both stay out of the repository.
+
+### Symlinks (Linux/Wayland)
 
 The target must not exist yet; linking onto an existing directory creates a nested
-link such as `tmux/tmux`.
+link such as `hypr/hypr`.
 
 ```sh
 DOTFILES="$HOME/dotfiles"
 
-ln -s "$DOTFILES/.config/lazygit/config.yml" "$(lazygit --print-config-dir)/config.yml"
-
-# Linux/Wayland only
 ln -s "$DOTFILES/.config/hypr" ~/.config/hypr
 ln -s "$DOTFILES/.config/quickshell" ~/.config/quickshell
 ```
-
-Zsh optionally loads `~/.zshrc.local` (device-specific paths) and `~/.zsh-secrets`
-(credentials). Both are ignored by Git.
 
 ### Windows
 

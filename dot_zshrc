@@ -1,4 +1,5 @@
-# Shared interactive Zsh configuration for macOS and Linux.
+# use ~/.config
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # Homebrew
 if [[ -d "/opt/homebrew/bin" ]]; then
