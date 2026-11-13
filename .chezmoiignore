@@ -25,3 +25,11 @@ README.md
 {{- if ne .chezmoi.os "linux" }}
 .config/ghostty/linux.conf
 {{- end }}
+
+# hyprland desktop: linux only
+{{- if ne .chezmoi.os "linux" }}
+.config/hypr
+.config/hypr/**
+.config/quickshell
+.config/quickshell/**
+{{- end }}

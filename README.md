@@ -6,8 +6,7 @@ Personal configuration for macOS, Linux, and Windows. Use at your own risk.
 
 ## Contents
 
-Partly managed with [chezmoi](https://www.chezmoi.io/) (`dot_*` files); the rest is
-still symlinked from `.config/`.
+Managed with [chezmoi](https://www.chezmoi.io/).
 
 - Neovim config
 - Git config
@@ -35,23 +34,12 @@ chezmoi diff
 chezmoi apply
 ```
 
-Non-config files at the repository root must be listed in `.chezmoiignore`.
+Non-config files at the repository root must be listed in `.chezmoiignore`. On a
+machine set up with the old symlinks, remove them before the first `chezmoi apply`.
 
 Zsh sets `XDG_CONFIG_HOME=~/.config`, so macOS tools such as LazyGit read from
 `~/.config` too. It optionally loads `~/.zshrc.local` (device-specific paths) and
 `~/.zsh-secrets` (credentials); both stay out of the repository.
-
-### Symlinks (Linux/Wayland)
-
-The target must not exist yet; linking onto an existing directory creates a nested
-link such as `hypr/hypr`.
-
-```sh
-DOTFILES="$HOME/dotfiles"
-
-ln -s "$DOTFILES/.config/hypr" ~/.config/hypr
-ln -s "$DOTFILES/.config/quickshell" ~/.config/quickshell
-```
 
 ### Windows
 
@@ -94,8 +82,8 @@ Integrations activate only when installed:
 
 ## Quiet desktop (Linux/Wayland)
 
-- Hyprland 0.56+ with Lua config in `.config/hypr/hyprland.lua`
-- Quickshell config in `.config/quickshell/quiet/`
+- Hyprland 0.56+ with Lua config in `dot_config/hypr/hyprland.lua`
+- Quickshell config in `dot_config/quickshell/quiet/`
 - Helpers: `hyprpaper`, `hypridle`, `hyprlock`, `hyprsunset`, `brightnessctl`,
   `playerctl`, `fcitx5`, `fcitx5-unikey`, `grim`, `slurp`, `swappy`, `wl-copy`,
   `xdg-open`
