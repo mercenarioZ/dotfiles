@@ -48,15 +48,6 @@ if (( $+commands[fzf] )); then
   bindkey '^X^F' fzf-file-widget
 fi
 
-# starship
-if (( $+commands[starship] )); then
-  eval "$(starship init zsh)"
-fi
-
-# [[ $- == *i* ]] && fastfetch
-
-export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
-
 # Device-specific environment such as Flutter and Java paths.
 [[ -r "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
 
