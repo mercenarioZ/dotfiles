@@ -48,11 +48,6 @@ if (( $+commands[fzf] )); then
   bindkey '^X^F' fzf-file-widget
 fi
 
-# Smarter directory navigation.
-if (( $+commands[zoxide] )); then
-  eval "$(zoxide init zsh)"
-fi
-
 # starship
 if (( $+commands[starship] )); then
   eval "$(starship init zsh)"
